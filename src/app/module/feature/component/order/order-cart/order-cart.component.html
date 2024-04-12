@@ -1,0 +1,29 @@
+<div  class="box" *ngFor="let item of ordercart?.orderitem">
+    <div class="grid grid-cols-1 md:grid-cols-6" >
+        <div class="md:col-span-3">
+            <div class="flex items-center">
+                <img class="h-20 w-20 md:h-32 md:w-32 object-cover object-top" [src]="item.product.imageUrl" alt="photu">
+                <div class="ml-5">
+                    <p class="font-semibold text-sm">{{item.product.title}}</p>
+                    <p class="text-sm text-gray-500">{{item.product.color}}</p>
+                    <p class="text-sm text-gray-500">Size:{{item.size}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="hidden md:block md:col-span-1">
+            <p class="font-semibold text-lg">
+                &#8377;{{item.product.discountedPrice}}
+            </p>
+        </div>
+        <div class="md:col-span-2">
+           
+            <p class="text-sm">Your item will be delivered</p>
+            <p class="font-semibold text-lg">
+                Expected Delivery Date - 25 March
+            </p>
+            <div>
+                <button (click)="navigateto(ordercart?._id)" mat-flat-button color="warn">Track Order</button>
+            </div>
+        </div>
+    </div>
+</div>

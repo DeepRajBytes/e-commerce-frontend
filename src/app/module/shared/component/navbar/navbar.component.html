@@ -1,0 +1,141 @@
+<nav class="bg-[rgba(18,18,18,1)]  fixed top-0 z-50 left-0 right-0 lg:px-20">
+    <div class="max-w-screen-xl mx-auto px-4 py-4 lg:py-0 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <div>
+                <img class="w-8" src="https://i.pinimg.com/originals/8f/1c/96/8f1c96d6dfa3c3146ab165f30d6dbc2e.png">
+            </div>
+            <a routerLink="/" class="text-gray-100 font-medium text-lg">DEEPRAJ FASHION</a>
+            <button class="open-button md:hidden" mat-button (click)="toggleNavbar()">
+                <!-- <mat-icon>view_list</mat-icon> -->
+              </button>
+             </div>
+
+        <div class="hidden md:flex items-center space-x-4">
+            <button class="open-button" mat-button (click)="opennavbarcontent('men')">
+               <p class="pt-3 text-gray-200">Men</p>
+            </button>
+            <button class="open-button" mat-button (click)="opennavbarcontent('women')">
+               <p  class="pt-3">women</p>
+            </button>
+            <button mat-icon-button (click)="navigatetocart()">
+                <mat-icon>shopping_cart</mat-icon>
+          </button>
+
+            <button (click)="handleOpenLoginModal()" *ngIf="!userProfile" mat-raised-button color="warn">Login</button>
+
+
+            <div *ngIf="userProfile" class="flex items-center space-x-4">
+                <span class="font-bold text-lg text-gray-100">{{userProfile.firstname}}</span>
+                <button mat-button [matMenuTriggerFor]="profilemenu">
+                    <img class="h-8 w-8" src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671116.jpg?w=740&t=st=1710418215~exp=1710418815~hmac=79fd94307990b5944935d3d567b898d7a74180a8477d9c4dacf3b44d0fcea2fd" alt="">
+                </button>
+                <mat-menu #profilemenu="matMenu">
+                    <button mat-menu-item (click)="naviagtetoorders()">Orders</button>
+                    <button mat-menu-item (click)="navigatetoprofile()">Profile</button>
+                    <button mat-menu-item (click)="handleLogout()">Logout</button>
+                </mat-menu>
+            </div>
+        </div>
+    </div>
+    <div class="absolute left-5 right-5 modal-container" *ngIf="isnavbarcontentisopen">
+        <app-nav-content [selectedSection]="currentsection"></app-nav-content>
+    </div>
+</nav>
+
+
+
+<!-- <div class="fixed top-0 z-50 left-0 right-0  bg-[#57eea5] text-gray-500 px-5 lg:px-20 " >
+ 
+    <div class="h-16 flex items-center justify-between">
+        <div class="flex  items-center">
+        <div>
+            <img class="w-8" src="https://i.pinimg.com/originals/8f/1c/96/8f1c96d6dfa3c3146ab165f30d6dbc2e.png">
+        </div>
+
+        <div class="">
+            <div class="flex items-center space-x-4">
+                <a routerLink="/" class=" text-gray-900 font-medium text-lg">DEEPRAJ FASHION</a>
+                <div>
+                    <button class="open-button" mat-button (click)="opennavbarcontent('men')"><img class="h-12 w-14" src="https://img.freepik.com/premium-photo/fun-cartoon-asian-teenager_183364-68123.jpg?w=740" alt=""></button>
+                </div>
+                <div>
+                    <button class="open-button"  mat-button (click)="opennavbarcontent('women')"><img class="h-12 w-14"    src="https://img.freepik.com/premium-vector/shopping_96037-34.jpg?w=740" alt=""></button>
+                </div>
+            </div>
+        </div>
+        </div>
+       
+
+        <div class="flex items-center">
+            <button mat-icon-button (click)="navigateto('cart')">
+            <mat-icon>shopping_cart</mat-icon>
+            </button>
+            <button *ngIf="false" mat-raised-button color="warn">Login</button>
+            <div *ngIf="true" class="ml-3 flex item-center">
+                <div class="flex items-center space-x-4">
+                    <span class="font-bold text-lg">Deepraj</span>
+                    <button  mat-button [matMenuTriggerFor]="profilemenu">
+                        <img class="h-8 w-8"    src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671116.jpg?w=740&t=st=1710418215~exp=1710418815~hmac=79fd94307990b5944935d3d567b898d7a74180a8477d9c4dacf3b44d0fcea2fd" alt="">
+                    </button>
+                    <mat-menu #profilemenu="matMenu">
+  <button mat-menu-item>Orders</button>
+  <button mat-menu-item>Profile</button>
+  <button mat-menu-item>Logout</button>
+</mat-menu>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="absolute left-5 right-5 modal-container" *ngIf="isnavbarcontentisopen">
+        <app-nav-content [selectedSection]="currentsection"></app-nav-content>
+    </div>
+</div>  -->
+
+
+<!-- // 3 rdworking  -->
+<!-- <nav class="bg-[#57eea5] fixed top-0 z-50 left-0 right-0 lg:px-20">
+    <div class="max-w-screen-xl mx-auto px-4 py-4 lg:py-0 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <div>
+                <img class="w-8" src="https://i.pinimg.com/originals/8f/1c/96/8f1c96d6dfa3c3146ab165f30d6dbc2e.png">
+            </div>
+            <a routerLink="/" class="text-gray-900 font-medium text-lg">DEEPRAJ FASHION</a>
+            <button class="open-button md:hidden" mat-button (click)="toggleNavbar()">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="hidden md:flex items-center space-x-4">
+            <button class="open-button" mat-button (click)="opennavbarcontent('men')">
+                <img class="h-12 w-14" src="https://img.freepik.com/premium-photo/fun-cartoon-asian-teenager_183364-68123.jpg?w=740" alt="">
+            </button>
+            <button class="open-button" mat-button (click)="opennavbarcontent('women')">
+                <img class="h-12 w-14" src="https://img.freepik.com/premium-vector/shopping_96037-34.jpg?w=740" alt="">
+            </button>
+            <button mat-icon-button (click)="navigateto('cart')">
+                <mat-icon>shopping_cart</mat-icon>
+            </button>
+            <button *ngIf="false" mat-raised-button color="warn">Login</button>
+            <div *ngIf="true" class="flex items-center space-x-4">
+                <span class="font-bold text-lg">Deepraj</span>
+                <button mat-button [matMenuTriggerFor]="profilemenu">
+                    <img class="h-8 w-8" src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671116.jpg?w=740&t=st=1710418215~exp=1710418815~hmac=79fd94307990b5944935d3d567b898d7a74180a8477d9c4dacf3b44d0fcea2fd" alt="">
+                </button>
+                <mat-menu #profilemenu="matMenu">
+                    <button mat-menu-item (click)="naviagtetoorders()">Orders</button>
+                    <button mat-menu-item>Profile</button>
+                    <button mat-menu-item>Logout</button>
+                </mat-menu>
+            </div>
+        </div>
+    </div>
+    <div class="absolute left-5 right-5 modal-container md:hidden" *ngIf="isnavbarcontentisopen">
+        <app-nav-content [selectedSection]="currentsection"></app-nav-content>
+    </div>
+</nav> -->
+

@@ -1,0 +1,97 @@
+<div class="grid grid-cols-1 gap-4 lg:grid-cols-12 px-5 lg:px-20">
+
+    <div class="col-span-1 lg:col-span-5">
+      
+        <div class="rounded-md shadow-md h-[32.2rem] overflow-y-scroll hide-scrollbar box py-5">
+
+            <div class="p-5 py-7  cursor-pointer">
+                
+                <div *ngFor="let address of userProfile.address let last = last" class="py-2 space-y-2">
+                   
+                    <app-address-cart [address]="address"></app-address-cart>
+                    
+                    <button mat-raised-button style="padding: 1rem;" color="accent" (click)="handelcreateorder(address)">
+                        Deliver Here
+                    </button>
+                    <mat-divider *ngIf="!last"></mat-divider>
+
+                </div>
+             </div>
+         </div>
+     </div>
+
+    <div class="col-span-1 lg:col-span-7">
+        <div class="rounded-md shadow-md p-5 box">
+
+            <form [formGroup]="myform" (ngSubmit)="handlesubmit()" action="">
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    <div class="col-span-1">
+                        <mat-form-field appearance="fill" class="w-full">
+                            <mat-label>Name</mat-label>
+                            <input formControlName="Name" matInput type="text" 
+                            placeholder="Enter Full Name" >
+                          </mat-form-field>
+                         
+                    </div>
+                    <div class="col-span-1">
+                        <mat-form-field appearance="fill" class="w-full">
+                            <mat-label>Mobile</mat-label>
+                            <input formControlName="Mobile" matInput type="number" 
+                            placeholder="Enter Mobile" >
+                          </mat-form-field>
+                         
+                    </div>
+                </div>
+                <div>
+                    <div class="w-full">
+                        <mat-form-field appearance="fill" class="w-full">
+                            <mat-label>Address</mat-label>
+                             <textarea matInput rows="1" formControlName="Address"></textarea>
+                          </mat-form-field>
+                         
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    <div class="col-span-1">
+                        <mat-form-field appearance="fill" class="w-full">
+                            <mat-label>Pincode</mat-label>
+                            <input formControlName="Pincode" matInput type="number" 
+                            placeholder="Enter Pincode" >
+                          </mat-form-field>
+                         
+                    </div>
+                    <div class="col-span-1">
+                        <mat-form-field appearance="fill" class="w-full">
+                            <mat-label>City</mat-label>
+                            <input formControlName="City" matInput type="text" 
+                            placeholder="Enter City" >
+                          </mat-form-field>
+                         
+                    </div>
+                </div>
+
+                <div>
+                    <div class="w-full">
+                        <mat-form-field appearance="fill" class="w-full">
+                            <mat-label>NearBy</mat-label>
+                             <input matInput formControlName="NearBy" type="text" placeholder="street,temple etc..">
+                          </mat-form-field>
+                         
+                    </div>
+                </div>
+
+                <div class="flex items-center">
+                    <button type="submit" class="w-full" style="padding: 1rem;"  mat-raised-button color="primary" >Deliver Here</button>
+
+                    <!-- <button mat-raised-button type="reset" class="ml-4" color="warn">Reset</button> -->
+
+                </div>
+               
+            </form>
+
+
+        </div>
+    </div>
+
+</div>
+

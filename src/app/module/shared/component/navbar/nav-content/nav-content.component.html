@@ -1,0 +1,25 @@
+
+  <div class="w-full">
+    <div class="bg-gray-950 text-white w-full h-1/2 shadow-lg p-6">
+        <div class="flex justify-center">
+            <div class="flex flex-col" *ngFor="let item of category[selectedSection].sections">
+            <h2 class="text-center m-5">{{item.name}}</h2>
+             <button  (click)="handleNavigate('/'+selectedSection+'/'+item.id+'/'+subitem.id)" mat-button *ngFor="let subitem of item.items">
+            {{subitem.name}}
+        </button>   
+            </div>
+            <div class="hidden lg:block">
+                <div class="m-4 ">
+           <a class="cursor-pointer"> <img class=" rounded-3xl h-[19rem] w-[16rem] object-cover ml-25 object-top" src="https://i.pinimg.com/736x/85/27/93/8527936e1ac439a2c12c6dbfcbb80d19.jpg" alt=""></a>
+                </div>
+                <!-- <p class="text-gray-300" >New Arrivals</p> -->
+            </div>
+            <div class="hidden lg:block">
+                <div class="m-4 ">
+           <a class="cursor-pointer"> <img class=" rounded-3xl h-[19rem] w-[16rem] object-cover ml-25 object-top" src="https://img.freepik.com/free-vector/abstract-grunge-style-coming-soon-with-black-splatter_1017-26690.jpg?w=740&t=st=1710495515~exp=1710496115~hmac=b508a451a465c61f9ab70decd23fd0ec724dbad7eacea47a33cbdd7ba7cf245c" alt=""></a>
+                </div>
+                <!-- <p class="text-gray-300" >New Arrivals</p> -->
+            </div>
+        </div>
+    </div>
+</div>

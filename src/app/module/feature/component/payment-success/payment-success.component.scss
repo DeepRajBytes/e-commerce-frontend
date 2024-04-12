@@ -1,0 +1,37 @@
+// @keyframes celebration {
+//     0% { transform: scale(1); }
+//     25% { transform: scale(1.1); }
+//     50% { transform: scale(0.9); }
+//     75% { transform: scale(1.1); }
+//     100% { transform: scale(1); }
+//   }
+
+//   .celebration {
+//     animation: celebration 1s ease-in-out;}
+
+.fireworks {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.firework {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ff0000;
+  border-radius: 50%;
+  animation: fireworks 1s infinite;
+}
+
+@keyframes fireworks {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+  }
+}

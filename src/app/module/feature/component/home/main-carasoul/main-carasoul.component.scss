@@ -1,0 +1,40 @@
+.carousel{
+    display: flex;
+    transition: transform 0.6 ease-in-out;
+}
+.carousel-item{
+    flex:0 0 auto;
+    width: 100%;
+}
+.carousel-item img{
+    width: 100%;
+    height: auto;
+}
+
+.carousel-container {
+    position: relative;
+  }
+  
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .carousel-btn:hover {
+    background-color: rgba(10, 0, 0, 0.7);
+  }
+  
+  .left-btn {
+    left: 10px;
+  }
+  
+  .right-btn {
+    right: 10px;
+  }

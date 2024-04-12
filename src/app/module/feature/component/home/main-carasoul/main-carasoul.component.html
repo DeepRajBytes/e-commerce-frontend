@@ -1,0 +1,15 @@
+<div class="relative">
+    <div class="carousel-container overflow-x-hidden">
+        <div class="carousel" [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
+            <ng-container *ngFor="let item of carouselData; let i = index">
+                 
+                <a [routerLink]="item.path" class="carousel-item">
+                    <img class="object-cover" [src]="item.image" alt="carousel image">
+                </a>
+            </ng-container>
+        </div>
+        <!-- Left and Right Buttons -->
+        <button class="carousel-btn left-btn" (click)="prevSlide()">&#9664;</button>
+        <button class="carousel-btn right-btn" (click)="nextSlide()">&#9654;</button>
+    </div>
+</div>

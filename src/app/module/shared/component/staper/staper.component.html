@@ -1,0 +1,17 @@
+<div class="flex flex-col sm:flex-row justify-between w-full space-y-5 sm:space-y-0 space-x-0 sm:space-x-8">
+    <div class="flex flex-col justify-between space-y-5 sm:space-y-0 sm:flex-row sm:space-x-5 items-center" *ngFor="let step of steps; let index = index; let last = last">
+        <div [ngClass]="{
+            'bg-green-600': (activeStep == step.title && index <= step.id),
+            'bg-red-700': (activeStep != step.title && activeStep !== 'CONFIRMED')
+        }" class="h-5 w-[1.4rem] sm:w-auto flex justify-center items-center rounded-full">
+            <mat-icon class="text-white">check_circle_outline</mat-icon>
+        </div>
+        <span class="text-sm">{{ step.title }}</span>
+        <div *ngIf="!last" class="w-full sm:w-[8vw]">
+            <mat-divider [ngClass]="{
+                'text-green-500': activeStep == step.title,
+                'text-gray-500': activeStep != step.title
+            }"></mat-divider>
+        </div>
+    </div>
+</div>

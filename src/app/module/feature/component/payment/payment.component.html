@@ -1,0 +1,61 @@
+<div class="mt-20 px-5 spac-y-5  lg:px-10">
+
+    <ng-container>
+        <div class="p-5 shadow-lg rounded-md box my-5 ">
+            <app-address-cart [address]="order.shippingAddress"></app-address-cart>
+
+        </div>
+
+        <div class="grid grid-cols-1 gap-5 lg:grid-cols-3 justify-between py-5">
+
+            <!-- Cart Items Column -->
+            <div class="lg:col-span-2">
+                <div class="space-y-3 box rounded-md">
+                    <div *ngFor="let item of order.orderitem; let last = last">
+                        <app-cartitem [cartItem]="item"></app-cartitem>
+                   <mat-divider *ngIf="!last"></mat-divider>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Price Details Column -->
+            <section class="px-5 lg:sticky lg:top-0 lg:mt-5 lg:h-[100vh]">
+                <div class="box p-5 rounded-md">
+                    <p class="font-bold text-gray-300 pb-4">PRICE DETAILS</p>
+                    <mat-divider></mat-divider>
+                    <div class="space-y-3">
+                        <div class="flex justify-between pt-3">
+                            <span class="">Total Price</span>
+                            <span>&#8377;{{order.totalprice}}</span>
+                        </div>
+                        <div class="flex justify-between pt-3">
+                            <span class="">Discount Rate</span>
+                            <span class="text-green-500">{{order.discount}}</span>
+                        </div>
+                        <div class="flex justify-between pt-3">
+                            <span class="">Delivery Charge</span>
+                            <span class="text-green-500 text-sm">Free</span>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <div class="flex justify-between pt-3 font-semibold text-lg">
+                            <span class="">Total Payable</span>
+                            <span class="text-orange-500">&#8377;{{order.totaldiscountprice}}</span>
+                        </div>
+                    </div>
+                    <button (click)="makePayment(order.totaldiscountprice)" class="mt-6 w-full text-lg px-10 py-3 bg-red-600 rounded-lg text-white">Payment</button>
+                </div>
+            </section>
+        </div>
+          </ng-container>
+
+</div>
+
+
+
+
+
+
+
+
+
+   

@@ -1,0 +1,57 @@
+<div class="p-5 shadow-lg">
+    <button (click)="getbackproduct(cartItem.product._id)">
+    <div class="flex items-center">
+       
+        <div class="w-[5rem] h-[7rem] lg:w-[9rem] lg:h-[9rem]">
+            <img   class="h-full w-full object-cover object-top"  [src]="cartItem.product.imageUrl" alt="photo">
+        </div>
+
+        <div class="ml-5 space-y-1">
+            <p class="text-gray-200 font-semibold">{{cartItem.product.title}}</p>
+            <p class="text-gray-400">Size : {{cartItem.size}} ,{{cartItem.product.color}}</p>
+            <p class="text-gray-400">Seller : Deepraj Fashion Store</p>
+
+            <div class="pt-2 flex items-center space-x-2">
+            <p class="font-bold">&#8377;{{cartItem.product.discountedPrice}}</p>
+            <p class="text-gray-400 line-through">&#8377;{{cartItem.product.price}}</p>
+            <p class="text-green-500 font-semibold">&#8377;{{cartItem.product.discountedPercent}}%</p>
+            </div>
+        
+        </div>
+    
+    </div>
+</button>
+</div>
+
+
+<div   *ngIf="showbutton"   class="flex items-center lg:space-x-10 pl-4 pb-2 justify-between">
+    <div class="flex items-center space-x-4">
+
+        <div class="exaple-container">
+            <button   mat-mini-fab color="accent" (click)="updatecartitem(-1)" [disabled]="cartItem.quantity === 1">
+                <mat-icon>remove</mat-icon>
+            </button>
+        </div>
+
+        <span class="py-1 px-4 rounded-sm border border-gray-500">
+            {{cartItem.quantity}}
+        </span>
+
+
+        <div class="exaple-container ">
+            <button  mat-mini-fab color="primary" (click)="updatecartitem(1)" [disabled]="false">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+
+        
+    </div>
+    <div class="example-container ">
+        <button (click)="removeitem()" class="border border-red-500 rounded p-2 transition duration-300 ease-in-out transform hover:scale-90">
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+          
+    </div>
+
+
+</div>

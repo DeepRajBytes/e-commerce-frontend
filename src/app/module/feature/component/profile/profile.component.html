@@ -1,0 +1,40 @@
+<div class="bg-black text-black p-4 ">
+        <div class="max-w-xl mx-auto bg-white p-8 rounded-md shadow-md">
+            <div class="flex">
+                <div>
+                    <h1 class="text-2xl font-bold mb-4">User Information</h1>
+                </div>
+                <div class="lg:ml-32 sm:ml-12">
+                    <button (click)="handleOpenLoginModal()" mat-stroked-button color="warn">Update Profile</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 gap-y-4">
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 font-bold mb-2">Name:</label>
+                    <span id="name" class="block text-gray-900">{{userProfile?.firstname}}  {{userProfile?.secondname}}</span>
+                   
+                </div>
+                <div class="mb-4">
+                    <label for="mobile" class="block text-gray-700 font-bold mb-2">Mobile:</label>
+                    <span id="mobile" class="block text-gray-900">{{userProfile?.mobile}}</span>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 font-bold mb-2">Email:</label>
+                    <span id="email" class="block text-gray-900">{{userProfile?.email}}</span>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2">Addresses:</label>
+                    <div class="divide-y divide-gray-200">
+                        <div class="py-2" *ngFor="let address of userProfile?.address">
+                            <span class="block text-gray-900">{{address.Name}}</span>
+                            <span class="block text-gray-900">{{address.Mobile}}</span>
+                            <span class="block text-gray-900">{{address.Address}}, {{address.City}}, {{address.Pincode}}</span>
+                        </div>
+                        <mat-divider></mat-divider>
+                    </div>
+                </div>
+            </div>
+        </div>
+ </div>
+ 

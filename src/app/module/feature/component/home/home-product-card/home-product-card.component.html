@@ -1,0 +1,20 @@
+<div (click)="details(product._id)" class="box hover:scale-105 transitition-all duration-500 cursor-pointer flex flex-colum item-center rounded-lg overflow-hidden h-[19rem] w-[9rem] mx-3">
+    <div class="personal">
+        <img  class="hover:scale-110 object-cover  transitition-all duration-500" [src]="product.imageUrl"  alt="product imageURL">
+        <div class="p-4">
+            <h3 class=" text-sm font-medium text-gray-800 h-[2rem] overflow-hidden">{{product.brand}}</h3>
+            <p class="text-sm text-gray-400 h-[4rem] overflow-hidden">{{product.title}}</p>
+            <div class="pd-1 flex">
+            <p class="text-sm text-green-400">&#8377;{{product.discountedPrice}}</p>
+            <p class="text-gray-400 line-through pl-2">&#8377;{{product.price}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

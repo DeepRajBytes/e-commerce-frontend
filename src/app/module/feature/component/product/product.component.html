@@ -1,0 +1,210 @@
+<!-- <div>
+    <main class=" px-4 sm:px-6 lg:px-24 pb-10 ">
+        <div class="flex items-baseline justify-between border-gray-200 pt-[2rem] ">
+            <h1 class="text-4xl font-bold text-white mr-auto">Products</h1>
+            <div class="flex items-center">
+                <button class="px-4 py-2  text-white rounded-md mr-4" mat-button
+                    [matMenuTriggerFor]="sortMenu">Sort</button>
+                <div>
+                    <mat-menu #sortMenu="matMenu">
+            
+                        <button (click)="handlesinglefiltersection('price_low','sort')" mat-menu-item>Price : low to high</button>
+                       
+            <button  (click)="handlesinglefiltersection('price_high','sort')"  mat-menu-item>Price : high to low</button>
+                    </mat-menu>
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+
+
+        <section class="pt-6">
+            <div class="grid grid-cols-1 gap-8 gap-y-10 lg:grid-cols-4">
+                <div>
+                    <div class="flex justify-between items-center" >
+                        <p class="text-lg">Filters</p>
+                        <mat-icon >filter_list</mat-icon>
+                    </div>
+                    <div>
+                    <form  class="hidden lg:block">
+                
+                
+                        <div *ngFor="let item of filterdata ;let last = last">
+                            <div class="">
+                                <span class="font-medium py-4">{{item.name}}</span>
+
+
+                                <div class="pt-4" id="filter-section-0">
+                                  
+                                    <div class="scroll-py-4">
+                                        
+                                        <div *ngFor="let subitem of item.options">
+                                            
+                                            <div class="flex items-center">
+                                               
+                                                <mat-checkbox 
+                                                id="'filter-' + subitem.value"
+                                                [name]="item.id" [value]="subitem.value" (click)="handlemultipleslesctfilter(subitem.value,item.id)">
+                                                    <span for="vehicle1">{{ subitem.label }}</span>
+                                                </mat-checkbox>
+                                            </div>
+                                            
+                                        </div>
+                                  
+                                    </div>
+                                
+                                </div>
+                                <mat-divider></mat-divider>
+                            </div>
+
+
+
+                        </div>
+                        <div *ngFor="let item of singlefilter; let last = last">
+                            <div>
+                              <span class="font-medium py-4">{{ item.name }}</span>
+                          
+                              <div class="pt-4" id="filter-section-{{ item.id }}">
+                                <div class="scroll-py-4">
+                                  <div *ngFor="let subitem of item.options">
+                                    <div class="flex items-center">
+                        
+                                       <mat-radio-button [id]="'filter-' + subitem.value" [value]="subitem.value" (click)="handlesinglefiltersection(subitem.value , item.id)"><span >{{ subitem.label }}</span></mat-radio-button>
+                                    
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <mat-divider *ngIf="!last"></mat-divider>
+                            </div>
+                          </div>
+                        
+
+
+                        
+                    </form>
+                    </div>
+                </div>
+                
+                
+                
+                
+                <div class="lg:col-span-3">
+                    <div class="flex flex-wrap justify-evenly">
+                    <ng-container *ngFor="let item of products">
+                        <app-product-cart [product]="item"></app-product-cart>
+                    </ng-container>
+                </div> 
+                </div>
+            </div>
+        </section>
+
+    </main>
+</div> -->
+
+
+
+<div>
+    <main class="px-4 sm:px-6 lg:px-24 pb-10">
+      <div class="flex items-baseline justify-between border-gray-200 pt-[2rem]">
+        <h1 class="text-4xl font-bold text-white mr-auto">Products</h1>
+        <div class="flex items-center">
+          <button class="px-4 py-2 text-white rounded-md mr-4" mat-button [matMenuTriggerFor]="sortMenu">Sort</button>
+          <div>
+            <mat-menu #sortMenu="matMenu">
+  
+              <button (click)="handlesinglefiltersection('price_low','sort')" mat-menu-item>Price : low to high</button>
+  
+              <button (click)="handlesinglefiltersection('price_high','sort')" mat-menu-item>Price : high to low</button>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+  
+  
+      <section class="pt-6">
+        <div class="grid grid-cols-1 gap-8 gap-y-10 lg:grid-cols-4">
+          <div>
+            <div class="flex justify-between items-center">
+              <p class="text-lg">Filters</p>
+              <mat-icon (click)="toggleFilters()">filter_list</mat-icon>
+            </div>
+            <div>
+
+              <form class="hidden lg:block">
+            <div *ngFor="let item of filterdata ;let last = last">
+                  <div class="">
+                    <span class="font-medium py-4">{{item.name}}</span>
+  
+  
+                    <div class="pt-4" id="filter-section-0">
+  
+                      <div class="scroll-py-4">
+  
+                        <div *ngFor="let subitem of item.options">
+  
+                          <div class="flex items-center">
+  
+                            <mat-checkbox id="'filter-' + subitem.value" [name]="item.id" [value]="subitem.value"
+                              (click)="handlemultipleslesctfilter(subitem.value,item.id)">
+                              <span for="vehicle1">{{subitem.label}}</span>
+                            </mat-checkbox>
+                          </div>
+  
+                        </div>
+  
+                      </div>
+  
+                    </div>
+                    <mat-divider></mat-divider>
+                  </div>
+  
+  
+  
+                </div>
+                <div *ngFor="let item of singlefilter; let last = last">
+                  <div>
+                    <span class="font-medium py-4">{{ item.name }}</span>
+  
+                    <div class="pt-4" id="filter-section-{{ item.id }}">
+                      <div class="scroll-py-4">
+                        <div *ngFor="let subitem of item.options">
+                          <div class="flex items-center">
+  
+                            <mat-radio-button [id]="'filter-' + subitem.value" [value]="subitem.value"
+                              (click)="handlesinglefiltersection(subitem.value , item.id)"><span>{{ subitem.label }}</span>
+                            </mat-radio-button>
+  
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <mat-divider *ngIf="!last"></mat-divider>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="lg:col-span-3 ">
+            <div class="flex flex-wrap justify-evenly">
+              <ng-container *ngFor="let item of getDisplayedProducts()">
+                <app-product-cart [product]="item"></app-product-cart>
+              </ng-container>
+            </div>
+            <mat-divider></mat-divider>
+            <!-- Pagination controls -->
+            <div class="flex justify-center my-4">
+                <button class="px-4 py-2 bg-blue-400 rounded-md mr-2 hover:bg-gray-300 focus:outline-none focus:bg-gray-300 transition duration-300"
+                  [disabled]="currentPage === 1" (click)="previousPage()">Previous</button>
+                <button  class="px-4 py-2 bg-blue-400 rounded-md hover:bg-gray-300 focus:outline-none focus:bg-gray-300 transition duration-300"
+                  [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+              </div>
+              
+          </div>
+        </div>
+      </section>
+  
+    </main>
+  </div>
+  

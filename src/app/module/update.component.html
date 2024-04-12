@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="subcontainer">
+        <form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="form-container">
+            <h1>Update Yourself</h1>
+            <div class="form-content">
+                <mat-form-field class="w-full">
+                    <mat-label>First Name</mat-label>
+                    <input matInput formControlName="firstname" required>
+                    <mat-error *ngIf="loginForm.controls['firstname'].hasError('required')">First name is required</mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput formControlName="secondname">
+                    <mat-error *ngIf="loginForm.controls['secondname'].hasError('required')">Last name is required</mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                    <mat-label>Number</mat-label>
+                    <input matInput formControlName="mobile" required>
+                    <mat-error *ngIf="loginForm.controls['mobile'].hasError('required')">Number is required</mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email"  email>
+                    <mat-error *ngIf="loginForm.controls['email'].hasError('required')">E-mail is required</mat-error>
+                    <mat-error *ngIf="loginForm.controls['email'].hasError('email')">E-mail should be Valid</mat-error>
+                </mat-form-field>
+                <div class="button-container">
+                    <button mat-raised-button class="w-full" color="warn">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+<!-- <div class="container">
+    <div class="subcontainer">
+        <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+            <h1>Update YourSelf</h1>
+            <div>
+                <mat-form-field class="w-full">
+                    <mat-label>First Name</mat-label>
+                    <input matInput formControlName="firstname" required>
+                    <mat-error *ngIf="loginForm.controls['firstname'].hasError('required')">First name is required</mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput formControlName="secondname" required>
+                    <mat-error *ngIf="loginForm.controls['secondname'].hasError('required')">Last name is required</mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                    <mat-label>Number</mat-label>
+                    <input matInput formControlName="mobile" required>
+                    <mat-error *ngIf="loginForm.controls['mobile'].hasError('required')">Number is required</mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" required email>
+                    <mat-error *ngIf="loginForm.controls['email'].hasError('required')">E-mail is required</mat-error>
+                    <mat-error *ngIf="loginForm.controls['email'].hasError('email')">E-mail should be Valid</mat-error>
+                </mat-form-field>
+                <div>
+                    <button mat-raised-button class="w-full" color="warn">Signup</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div> -->

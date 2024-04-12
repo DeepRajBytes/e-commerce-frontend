@@ -1,0 +1,54 @@
+<div class="py-10 text-white px-5 lg:px-20">
+    <h1 class="text-lg text-center font-bold py-10">My Orders</h1>
+
+    <div *ngIf="orders.length > 0; else noOrders">
+    <div class="lg:grid grid-cols-4 gap-5">
+
+        <div class="lg:col-span-1 col-span-2">
+
+            <div class="">
+
+                <div *ngFor="let option of orderfilter">
+
+                    <div class="flex items-center">
+
+                        <mat-checkbox [id]="option.value" [value]="option.value">
+                            <span class="text-gray-500 text-sm">{{option.label}}</span>
+                        </mat-checkbox>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>    
+
+            <div class="lg:col-span-3 col-span-2 space-y-5">
+                
+                
+                    <div *ngFor="let item of orders">
+                       
+                        <app-order-cart [ordercart]="item"></app-order-cart>
+                    </div>
+                  
+            </div>
+    </div></div>
+    <ng-template #noOrders>
+        <div class="text-center">
+            <div class="lg:pl-96"> 
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-red-500 mb-2 animate-bounce" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0-1a9 9 0 1 1 0 18 9 9 0 0 1 0-18zM9 7a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0V7zm0 8a1 1 0 0 1 2 0 1 1 0 0 1-2 0z"/>
+                </svg>
+            </div>
+    
+            <h2 class="text-3xl font-semibold text-gray-800">Oops!</h2>
+            <p class="text-gray-600 mt-2">It seems you haven't placed any orders yet.</p>
+            <p class="text-gray-600">Why not explore our amazing products?</p>
+            <a href="/" class="text-blue-600 hover:underline mt-4 inline-block">Explore Products</a>
+        </div>
+    </ng-template>
+    
+    
+ 
+    </div>
+

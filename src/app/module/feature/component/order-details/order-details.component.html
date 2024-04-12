@@ -1,0 +1,72 @@
+
+<div class="py-10 text-white px-5 lg:px-20">
+    
+    <div class="py-5">
+        <h2 class="text-center py-2">Order Status</h2>
+        <app-staper activeStep="CONFIRMED" [steps]="steps"></app-staper>
+    </div>
+    
+
+    <ng-container *ngIf="ordercart?.paymentDetails">
+        <div class="box px-5 ">
+            <h1 class="text-lg font-semibold py-5">Tracking Details</h1>
+            <div class="flex justify-between items-center">
+            <div class="flex py-2">
+                <p class="font-medium">Tracking ID:</p>
+                <p class="pl-2">{{trackingId}}</p>
+                <button (click)="copyPaymentId(trackingId)"  class="transition duration-300 ease-in-out transform hover:scale-90">
+                    <mat-icon>mouse</mat-icon>
+                   </button>
+            </div>
+            <div class="flex py-2">
+                <p class="font-medium">Delivery Partner:</p>
+                <p class="pl-2">Delivery</p>  
+            </div>
+            <div class="flex py-2">
+                <p class="font-medium">Delivery Date:</p>
+                <p class="pl-2">Monday,24 April</p>  
+            </div>
+        </div>
+        </div>
+    </ng-container>
+    
+    
+    <div class="space-y-10 pt-10">
+       
+        <div class="box px-10">
+            <h1 class="text-lg font-semibold py-5">Shipping Address</h1>
+            <app-address-cart [address]="ordercart?.shippingAddress"></app-address-cart>
+        </div>
+       
+        <ng-container *ngIf="ordercart?.paymentDetails">
+            <div class="box px-10">
+                <h1 class="text-lg font-semibold py-5">Payment Details</h1>
+                <!-- Payment Status -->
+                <div class="flex justify-between items-center py-2">
+                    <p class="font-medium">Payment Status:</p>
+                    <p>{{ ordercart.paymentDetails.paymentstatus}}</p>
+                </div>
+                <!-- Payment ID -->
+                <div class="flex justify-between items-center py-2">
+                    <p class="font-medium">Payment ID:</p>
+                    <p>{{ ordercart.paymentDetails.paymentid}}</p>
+                    <button (click)="copyPaymentId(ordercart.paymentDetails.paymentid)"  class="border border-red-500 rounded p-2 transition duration-300 ease-in-out transform hover:scale-90">
+                       CopyId
+                      </button>
+                </div>
+                <!-- Payment Method -->
+                <div class="flex justify-between items-center py-2">
+                    <p class="font-medium">Payment Method:</p>
+                    
+                    <p>{{ ordercart.paymentDetails.paymentmethod}}</p>
+                </div>
+                <!-- Add more payment details as needed -->
+            </div>
+        </ng-container>
+        
+        
+       
+       
+    </div>
+
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+   <div class="subcontainer">
+    <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        <h1>Wel-come  To Deepraj Fashion</h1>
+        <div>
+            <mat-form-field class="w-full">
+             
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" required email>
+           
+            <mat-error *ngIf="loginForm.controls['email'].hasError('required')">E-mail is required</mat-error>
+            <mat-error *ngIf="loginForm.controls['email'].hasError('email')">E-mail should be Valid</mat-error>
+            
+            </mat-form-field>
+              <mat-form-field class="w-full">
+             
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" required type="password">
+                <mat-error *ngIf="loginForm.controls['password'].hasError('required')">password is required</mat-error>
+            <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">password should be minlength be 8 </mat-error>
+                </mat-form-field>
+        
+            <div>
+                <button  style="padding: 1.7rem;" mat-raised-button class="w-full" color="warn">Login
+                 </button>
+            </div>
+
+            <div class="mt-4">
+                <span >
+                     you don't have Account?
+                </span>
+                <button  mat-stroked-button color="primary" (click)="changeTemplate()">
+                    Signup
+                </button>
+
+            </div>
+
+        </div>
+    </form>
+</div>
+</div>
+
