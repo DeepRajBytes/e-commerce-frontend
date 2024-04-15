@@ -6,13 +6,10 @@
             <div class="box p-5 space-y-3">
 
                 <ng-container *ngIf="cart">
-                    <div *ngFor="let item of cartitems ; let last = last">
-
+                    <div *ngFor="let item of cartitems; let last = last">
+        <app-cartitem  [cartItem]="item"  showbutton="true" (itemUpdated)="handleItemUpdate()"></app-cartitem>
                         
-
-                        <app-cartitem  [cartItem]="item"  showbutton="true"></app-cartitem>
-                        
-                        <mat-divider *ngIf="!last"></mat-divider>
+            <mat-divider *ngIf="!last"></mat-divider>
                     
                     </div>
 

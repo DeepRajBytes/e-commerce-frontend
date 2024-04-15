@@ -36,15 +36,11 @@
         <span class="py-1 px-4 rounded-sm border border-gray-500">
             {{cartItem.quantity}}
         </span>
-
-
-        <div class="exaple-container ">
+         <div class="exaple-container ">
             <button  mat-mini-fab color="primary" (click)="updatecartitem(1)" [disabled]="false">
                 <mat-icon>add</mat-icon>
             </button>
-        </div>
-
-        
+        </div>     
     </div>
     <div class="example-container ">
         <button (click)="removeitem()" class="border border-red-500 rounded p-2 transition duration-300 ease-in-out transform hover:scale-90">

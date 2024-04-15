@@ -21,24 +21,31 @@ export class CartComponent implements OnInit{
   constructor(private productService: ProductService,private dialog: MatDialog,private route:Router , private cartService : CartService , private store : Store<AppState>){
   }
  
-
+  
 
 
   ngOnInit(): void {
-    
-   this.cartService.getCart()
-  this.store.pipe(select(store => store.cart)).subscribe((cart) => {
-    if(cart.cart){
-      this.deep = cart.cart
-    }
-    if(cart.cartitems){this.cartitems = cart.cartitems;}
-  });
-  
-  
+    this.loadcart();
+ }
+ 
+  loadcart(){
+    this.cartService.getCart()
+    this.store.pipe(select(store => store.cart)).subscribe((cart) => {
+      if(cart.cart){
+        this.deep = cart.cart
+      }
+      if(cart.cartitems){this.cartitems = cart.cartitems;}
+    });
+  }
+
+  refreshCart() {
+    this.loadcart();
   }
 
   
-  
+  handleItemUpdate() {
+    this.refreshCart();
+  }
 
 navigatetocheckout() {
   this.route.navigate(['/checkout'])
