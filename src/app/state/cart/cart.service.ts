@@ -69,7 +69,7 @@ export class CartService {
 
     // 3
     removeCartItem(cartItemId : Number){
-        console.log("id ye hai remoce ki ",cartItemId)
+        // console.log("id ye hai remoce ki ",cartItemId)
         const url = `${this.API_BASE_URL}/api/cart_items/${cartItemId}`;
         const headers = new HttpHeaders({
             Authorization: `Bearer ${localStorage.getItem("JWT")}`,
@@ -77,9 +77,9 @@ export class CartService {
         });
 
         return this.http.delete(url ,{headers}).pipe(map((data:any)=>{
-            // console.log("deleted item from cart is",data)
             return removeCartItemSuccess({cartItemId:data})
         }),
+        
         catchError((error) => {
 
             console.log("received error in remove item to cart", error)
@@ -93,11 +93,15 @@ export class CartService {
     // 4
     updateCartItem(reqData:any){
         console.log("data is", reqData)
+
+
         const url = `${this.API_BASE_URL}/api/cart_items/${reqData.cartItemId}`;
         const headers = new HttpHeaders({
             Authorization: `Bearer ${localStorage.getItem("JWT")}`,
             'content-Type': 'application/json',
         });
+
+        
         const requestData = {  cartItemId :reqData.cartItemId,quantity: reqData.data.quantity };
         return this.http.put(url , requestData , {headers}).pipe(map((data:any)=>{
             // console.log("update cart item request ", data)

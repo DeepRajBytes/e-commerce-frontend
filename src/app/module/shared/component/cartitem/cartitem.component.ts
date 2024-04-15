@@ -16,24 +16,22 @@ export class CartitemComponent implements OnInit{
 
 
 
-  ngOnInit(): void {
-    // throw new Error('Method not implemented.');
-    // console.log("this is cart", this.cartItem)
-  }
+  ngOnInit(): void {}
+
   getbackproduct(id:any){
     this.productService.findProductById(id)
     this.route.navigate([`product-details/${id}`])
    }
 
 
-quantity: number=1;
+quantity:number = 1;
+
 removeitem() {
 this.cartService.removeCartItem(this.cartItem._id);
 window.location.reload();
 }
 
 updatecartitem(num: number) {
-
   this.quantity += num; 
   if (this.quantity < 1) {
     this.quantity = 1; 
@@ -42,6 +40,6 @@ updatecartitem(num: number) {
     cartItemId : this.cartItem._id,
     data: {quantity : num + this.cartItem.quantity}
   })
-  window.location.reload();
+  // window.location.reload();
 }
 }

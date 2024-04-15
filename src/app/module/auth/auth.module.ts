@@ -8,21 +8,23 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from "../shared/shared.module";
 
 
 @NgModule({
-  declarations: [
-    SigninComponent,
-    SignupComponent,
-    AuthComponent
-  ],
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    ReactiveFormsModule
-  ]
+    declarations: [
+        SigninComponent,
+        SignupComponent,
+        AuthComponent
+    ],
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        SharedModule
+    ]
 })
 export class AuthModule { }
