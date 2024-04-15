@@ -13,13 +13,14 @@ import { StoreModule } from '@ngrx/store';
 import { AuthModule } from './module/auth/auth.module';
 import { authReducer } from './state/auth/auth.reducer';
 import { userReducer } from './state/user/user.reducer';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { productReducer } from './state/product/product.reducer';
 import { OrderReducer } from './state/orders/order.reducer';
 import { FeatureModule } from './module/feature/feature.module';
 import { cartReducer } from './state/cart/cart.reducer';
 import { UpdateModule } from './module/update/update.module';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { InterceptorService } from './services/interceptor.service';
 
 
 
@@ -50,7 +51,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
       cart: cartReducer
     })
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

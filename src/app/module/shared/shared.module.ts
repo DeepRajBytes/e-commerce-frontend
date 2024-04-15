@@ -14,6 +14,9 @@ import { CartitemComponent } from './component/cartitem/cartitem.component';
 import { AddressCartComponent } from './component/address-cart/address-cart.component';
 import { StaperComponent } from './component/staper/staper.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoaderComponent } from './component/loader/loader.component';
 
  
 @NgModule({
@@ -26,6 +29,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     CartitemComponent,
     AddressCartComponent,
     StaperComponent,
+    LoaderComponent,
     
     
     
@@ -37,7 +41,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatIconModule,
     MatDividerModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule
    
   ],
   exports:[
@@ -48,7 +54,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     StarComponent,
     CartitemComponent,
     AddressCartComponent,
-    StaperComponent
+    StaperComponent,
+    LoaderComponent
   ]
 })
 export class SharedModule { }
