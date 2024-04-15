@@ -40,6 +40,6 @@ updatecartitem(num: number) {
     cartItemId : this.cartItem._id,
     data: {quantity : num + this.cartItem.quantity}
   })
-  // window.location.reload();
+  window.location.reload();
 }
 }
