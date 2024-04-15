@@ -28,7 +28,7 @@ quantity:number = 1;
 
 removeitem() {
 this.cartService.removeCartItem(this.cartItem._id);
-window.location.reload();
+// window.location.reload();
 }
 
 updatecartitem(num: number) {
@@ -40,6 +40,6 @@ updatecartitem(num: number) {
     cartItemId : this.cartItem._id,
     data: {quantity : num + this.cartItem.quantity}
   })
-  window.location.reload();
+  // window.location.reload();
 }
 }
