@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
@@ -12,7 +12,7 @@ import { ProductService } from 'src/app/state/product/product.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit,OnChanges{
+export class CartComponent implements OnInit{
   
   cart:any = []; 
   cartitems : any ;
@@ -20,14 +20,7 @@ export class CartComponent implements OnInit,OnChanges{
 
   constructor(private productService: ProductService,private dialog: MatDialog,private route:Router , private cartService : CartService , private store : Store<AppState>){
   }
-  ngOnChanges(changes: SimpleChanges): void {
-      this.cartService.getCart()
-  this.store.pipe(select(store => store.cart)).subscribe((cart) => {
-    if(cart.cart){this.deep = cart.cart}
-    if(cart.cartitems){this.cartitems = cart.cartitems;}
-         
-  });
-  }
+ 
 
 
 
