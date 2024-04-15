@@ -19,6 +19,7 @@ import { OrderReducer } from './state/orders/order.reducer';
 import { FeatureModule } from './module/feature/feature.module';
 import { cartReducer } from './state/cart/cart.reducer';
 import { UpdateModule } from './module/update/update.module';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
@@ -32,7 +33,7 @@ import { UpdateModule } from './module/update/update.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-   
+    MatProgressBarModule,
 
     // made module 
     FeatureModule,

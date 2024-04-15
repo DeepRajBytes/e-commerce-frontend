@@ -19,7 +19,7 @@
 
                 </ng-container>
                 <ng-container *ngIf="!(cart && cartitems && cartitems.length > 0)">
-                    <div class="text-center">
+                    <div class="text-center ">
                         <h2 class="text-xl font-semibold text-gray-600 mb-2">Your Cart is Empty</h2>
                         <p class="text-gray-500 mb-4">Looks like there's nothing in your cart. <br> Why not add some items and make your day brighter?</p>
                         <a routerLink="/" class="text-blue-600 hover:underline">Explore Our Wide Range</a>
@@ -32,8 +32,8 @@
         </section>
 
 
-        <section class="px-5 sticky top-0 mt-5  lg:mt-0">
-            <ng-container *ngIf="cart">
+        <section class="px-5 sticky top-0 mt-5  lg:mt-0" *ngIf="cart && cartitems && cartitems.length > 0">
+            <ng-container>
                 <div class="box p-5 rounded-md">
                     <p class="font-bold text-gray-300 pb-4">PRICE DETAILS</p>
                     <mat-divider></mat-divider>
