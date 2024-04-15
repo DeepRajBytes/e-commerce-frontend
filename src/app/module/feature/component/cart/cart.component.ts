@@ -30,11 +30,10 @@ export class CartComponent implements OnInit{
   this.store.pipe(select(store => store.cart)).subscribe((cart) => {
     if(cart.cart){
       this.deep = cart.cart
-      window.location.reload()
     }
     if(cart.cartitems){this.cartitems = cart.cartitems;}
   });
-
+  
   
   }
 
