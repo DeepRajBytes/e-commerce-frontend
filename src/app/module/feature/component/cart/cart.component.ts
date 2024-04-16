@@ -43,8 +43,19 @@ export class CartComponent implements OnInit{
   }
 
   
-  handleItemUpdate() {
+  handleItemUpdate(event:any) {
+    // this.refreshCart();
+    if (event.quantity !== undefined) {
+      this.cartService.updateCartItem({
+        cartItemId: event.cartItemId,
+        data: { quantity: event.quantity }
+      });
+    } else if (event.remove) {
+      this.cartService.removeCartItem(event.cartItemId);
+    }
+    // Refresh cart after update
     this.refreshCart();
+    window.location.reload()
   }
 
 navigatetocheckout() {
