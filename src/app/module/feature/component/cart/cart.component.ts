@@ -55,7 +55,7 @@ export class CartComponent implements OnInit{
     }
     // Refresh cart after update
     this.refreshCart();
-    window.location.reload()
+    // window.location.reload()
   }
 
 navigatetocheckout() {
