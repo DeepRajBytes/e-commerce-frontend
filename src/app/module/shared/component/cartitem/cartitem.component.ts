@@ -29,32 +29,32 @@ export class CartitemComponent implements OnInit{
 
 quantity:number = 1;
 
-// removeitem() {
-// this.cartService.removeCartItem(this.cartItem._id);
-// // window.location.reload();
-// this.itemUpdated.emit();
-// }
-
 removeitem() {
-  Swal.fire({
-    title: "Are you sure?",
-    text: "It may be Out Of Stock Any Time",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonText: "Yes, delete it!",
-    cancelButtonText: "No, cancel!",
-    reverseButtons: true
-  }).then((result) => {
-    if (result.isConfirmed) {
-      this.cartService.removeCartItem(this.cartItem._id);
-      window.location.reload();
-    } else if (result.dismiss === Swal.DismissReason.cancel) {
-     
-      console.log("Item deletion cancelled!");
-    }
-  });
-  this.itemUpdated.emit();
+this.cartService.removeCartItem(this.cartItem._id);
+// window.location.reload();
+this.itemUpdated.emit();
 }
+
+// removeitem() {
+//   Swal.fire({
+//     title: "Are you sure?",
+//     text: "It may be Out Of Stock Any Time",
+//     icon: "warning",
+//     showCancelButton: true,
+//     confirmButtonText: "Yes, delete it!",
+//     cancelButtonText: "No, cancel!",
+//     reverseButtons: true
+//   }).then((result) => {
+//     if (result.isConfirmed) {
+//       this.cartService.removeCartItem(this.cartItem._id);
+//       window.location.reload();
+//     } else if (result.dismiss === Swal.DismissReason.cancel) {
+     
+//       console.log("Item deletion cancelled!");
+//     }
+//   });
+//   this.itemUpdated.emit();
+// }
 updatecartitem(num: number) {
   this.quantity += num; 
   if (this.quantity < 1) {
