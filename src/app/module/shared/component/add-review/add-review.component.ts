@@ -32,11 +32,12 @@ export class AddReviewComponent implements OnInit{
     const reviewdata = this.reviewForm.get("review")?.value
     this.productService.reviewProduct({productId : this.data.productId , review :reviewdata})
 
-    this.store.pipe(select((store)=>store.product)).subscribe((user)=>{
-      // this.userProfile = user.message;
+    this.store.pipe(select((store:any)=>store.product)).subscribe((user)=>{
+
+     
       if(user.message){
         this.dialog.closeAll()
-        window.location.reload();
+        // window.location.reload();
       }
     })
     }

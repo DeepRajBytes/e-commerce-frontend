@@ -7,7 +7,7 @@ const initialState={
     loading:false,
     error:null,
     product:[],
-    message:String,
+    message:'',
     reviews:null
 }
 
@@ -33,9 +33,11 @@ export const productReducer = createReducer(
     })),
 
     on(reviewproductRequestSuccess,(state,{payload})=>({
+
        ...state ,
-       message :payload,
-       loading :false
+       product: payload, // Replace existing product with the new product
+        message: JSON.stringify(payload), // Update message with the new product
+        loading: false
     })),
    
 
