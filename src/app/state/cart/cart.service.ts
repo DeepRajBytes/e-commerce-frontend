@@ -77,8 +77,8 @@ export class CartService {
         });
 
         return this.http.delete(url ,{headers}).pipe(map((data:any)=>{
-            console.log("raj is ", data)
-            console.log("raj id is ",data._id)
+            this.store.dispatch(removeCartItemSuccess({ cartItemId: data._id }));
+            this.getCart();
             return removeCartItemSuccess({cartItemId:data._id})
         }),
         
@@ -88,7 +88,7 @@ export class CartService {
             return of(removeCartItemFailure(error.response && error.response.data.message ?error.response.data.message : error.message));
         }) 
         
-        ).subscribe((action)=>this.store.dispatch(action));
+        ).subscribe();
 
     }
 
