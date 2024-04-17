@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { catchError, map, of } from "rxjs";
 import { BASE_API_URL } from "src/app/config/api";
-import { findProductByCategoryRequestFailure, findProductByCategoryRequestSuccess, findProductByIDRequestFailure, findProductByIDRequestSuccess, findproductbyParticularcategoryFailure, findproductbyParticularcategorySuccess, reviewproductRequestFailure, reviewproductRequestSuccess } from "./product.action";
+import { findProductByCategoryRequestFailure, findProductByCategoryRequestSuccess, findProductByIDRequestFailure, findProductByIDRequestSuccess, findproductbyParticularcategoryFailure, findproductbyParticularcategorySuccess, reviewproductRequestFailure, reviewproductRequestSuccess, updateProduct } from "./product.action";
 
 
 @Injectable({
@@ -87,6 +87,7 @@ export class ProductService {
         
         this.http.post(`${this.API_BASE_URL}/api/reviews/create`,reqData ,{headers}).pipe(map((data:any)=>{
             // console.log("foundeded review wala data ",data);
+            this.store.dispatch(updateProduct({ product: data }));
             return reviewproductRequestSuccess({payload:data})
         }),catchError((error)=>{
 

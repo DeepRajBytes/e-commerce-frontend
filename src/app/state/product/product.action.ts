@@ -31,3 +31,4 @@ export const  reviewproductRequestSuccess = createAction('[Prodcut] Find Product
 
 export const  reviewproductRequestFailure = createAction('[Prodcut] Find Product By Category Request Failure',props<{error:any}>())
 
+export const updateProduct = createAction('[Product] Update Product', props<{ product: any }>());

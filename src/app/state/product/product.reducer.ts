@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store"
-import { findProductByCategoryRequestFailure, findProductByCategoryRequestSuccess, findProductByIDRequestFailure, findProductByIDRequestSuccess, findproductbyParticularcategoryFailure, findproductbyParticularcategorySuccess, reviewproductRequestFailure, reviewproductRequestSuccess } from "./product.action"
+import { findProductByCategoryRequestFailure, findProductByCategoryRequestSuccess, findProductByIDRequestFailure, findProductByIDRequestSuccess, findproductbyParticularcategoryFailure, findproductbyParticularcategorySuccess, reviewproductRequestFailure, reviewproductRequestSuccess, updateProduct } from "./product.action"
 
 
 const initialState={
@@ -35,8 +35,14 @@ export const productReducer = createReducer(
     on(reviewproductRequestSuccess,(state,{payload})=>({
 
        ...state ,
-       product: payload, // Replace existing product with the new product
-        message: JSON.stringify(payload), // Update message with the new product
+       
+        message: JSON.stringify(payload), 
+        loading: false
+    })),
+    
+    on(updateProduct, (state, { product }) => ({
+        ...state,
+        product: product,
         loading: false
     })),
    
