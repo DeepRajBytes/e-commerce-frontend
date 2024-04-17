@@ -82,7 +82,7 @@ export const cartReducer = createReducer(
     on(CartAction.removeCartItemSuccess , (state , action)=>({
         ...state,
         loading: false ,
-        cartitems : state.cartitems.filter((item)=> item.id !== action.cartItemId)
+        cartitems : state.cartitems.filter((item)=> item._id !== action.cartItemId)
     })),
     on(CartAction.removeCartItemFailure , (state , action)=>({
         ...state ,

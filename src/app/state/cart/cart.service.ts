@@ -55,7 +55,7 @@ export class CartService {
         });
 
         return this.http.get(url ,{headers}).pipe(map((data:any)=>{
-            // console.log("founded data in getcart",data)
+            console.log("founded data in getcart",data)
             return getCartRequestSuccess({payload:data})
         }),
          catchError((error) => {
@@ -77,7 +77,9 @@ export class CartService {
         });
 
         return this.http.delete(url ,{headers}).pipe(map((data:any)=>{
-            return removeCartItemSuccess({cartItemId:data})
+            console.log("raj is ", data)
+            console.log("raj id is ",data._id)
+            return removeCartItemSuccess({cartItemId:data._id})
         }),
         
         catchError((error) => {

@@ -30,10 +30,9 @@ export class CartitemComponent implements OnInit{
 quantity:number = 1;
 
 removeitem() {
-// this.cartService.removeCartItem(this.cartItem._id);
-// window.location.reload();
+this.cartService.removeCartItem(this.cartItem._id);
 this.cdr.detectChanges();
-this.itemUpdated.emit({ cartItemId: this.cartItem._id, remove: true });
+// this.itemUpdated.emit({ cartItemId: this.cartItem._id, remove: true });
 }
 
 // removeitem() {
