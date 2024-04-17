@@ -3,5 +3,5 @@ export interface AppState {
     auth:any,
     product:any,
     cart:any,
-    order:any
+    order:any,
 }

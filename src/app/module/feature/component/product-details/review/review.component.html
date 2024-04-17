@@ -15,17 +15,16 @@
             <div class="space-y-2">
 
                 <div>
-                    <p class="font-semibold">Deepraj Sen</p>
-                    <p class="opacity-70">13 aug 20233</p>
+                    <p class="font-semibold">{{reviews.user.firstname}}</p>
+                    <p class="opacity-70">{{formatDate(reviews.createdAt)}}</p>
                 </div>
                 <div>
                     <app-star></app-star>
                 </div>
                 <p>
-                    nice shirt love it !
+                   {{reviews.review}}
                 </p>
             </div>
         </div>
-          
-    </div>
+      </div>
 </div>

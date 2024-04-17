@@ -25,3 +25,9 @@ export const findProductByIDRequestFailure = createAction('[Prodcut] Find Produc
 
 
 
+export const reviewproductRequest = createAction('[Prodcut] Find Product By Category Request')
+
+export const  reviewproductRequestSuccess = createAction('[Prodcut] Find Product By Category Request Success',props<{payload:any}>())
+
+export const  reviewproductRequestFailure = createAction('[Prodcut] Find Product By Category Request Failure',props<{error:any}>())
+

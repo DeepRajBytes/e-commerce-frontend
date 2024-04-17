@@ -11,6 +11,7 @@ import { AuthComponent } from 'src/app/module/auth/auth.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataserviceService } from 'src/app/services/dataservice.service';
+import { AddReviewComponent } from 'src/app/module/shared/component/add-review/add-review.component';
 
 @Component({
   selector: 'app-product-details',
@@ -20,13 +21,13 @@ import { DataserviceService } from 'src/app/services/dataservice.service';
 export class ProductDetailsComponent implements OnInit {
 
   selectedsize: any;
-  reviews = [1,2,3,];
+  reviews =[1,2,3];
   relatedproduct:any 
   product: any;
   productId : any;
   
 
-  constructor(private snackBar: MatSnackBar,private dialog: MatDialog, private route: Router, private productService: ProductService, private activeRoute: ActivatedRoute, private store: Store<AppState>, private cartService: CartService , private dataService: DataserviceService, private productSerivce : ProductService) {}
+  constructor(private snackBar: MatSnackBar,private dialog: MatDialog, private route: Router, private productService: ProductService, private activeRoute: ActivatedRoute, private store: Store<AppState>, private cartService: CartService , private dataService: DataserviceService) {}
 
   ngOnInit(): void {
     
@@ -35,8 +36,11 @@ export class ProductDetailsComponent implements OnInit {
     this.productId = id
      this.store.pipe(select(store => store.product)).subscribe((product) => {
       this.product = product?.product
+      // console.log("product ye hai apa isme chekc kar", this.product)
     })   
-    
+
+
+
     this.fetchRelatedProducts();
     // this.relatedproduct = this.dataService.getRelatedProductData().filter((item: any) => item._id !== this.productId);;
     // console.log('Related Products:', this.relatedproduct);
@@ -60,6 +64,15 @@ export class ProductDetailsComponent implements OnInit {
       width: "400px",
     });
   }
+
+  handleOpenReviewModal=()=> {
+      
+    this.dialog.open(AddReviewComponent,{
+      disableClose:false,
+      width:"400px",
+      data: { productId: this.productId  , product : this.product }
+       })
+    }
 
   async handleAddToCart() {
 

@@ -17,6 +17,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LoaderComponent } from './component/loader/loader.component';
+import { AddressComponent } from './component/address/address.component';
+import { AddReviewComponent } from './component/add-review/add-review.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
  
 @NgModule({
@@ -30,6 +33,8 @@ import { LoaderComponent } from './component/loader/loader.component';
     AddressCartComponent,
     StaperComponent,
     LoaderComponent,
+    AddressComponent,
+    AddReviewComponent,
     
     
     
@@ -43,7 +48,8 @@ import { LoaderComponent } from './component/loader/loader.component';
     MatMenuModule,
     MatDialogModule,
     MatProgressBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ReactiveFormsModule
    
   ],
   exports:[

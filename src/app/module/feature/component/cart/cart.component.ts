@@ -20,9 +20,6 @@ export class CartComponent implements OnInit{
 
   constructor(private productService: ProductService,private dialog: MatDialog,private route:Router , private cartService : CartService , private store : Store<AppState>){
   }
- 
-  
-
 
   ngOnInit(): void {
     this.loadcart();
@@ -52,6 +49,7 @@ export class CartComponent implements OnInit{
       });
     } else if (event.remove) {
       this.cartService.removeCartItem(event.cartItemId);
+      this.refreshCart();
     }
     // Refresh cart after update
     this.refreshCart();

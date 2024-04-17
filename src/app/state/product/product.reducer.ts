@@ -1,11 +1,14 @@
 import { createReducer, on } from "@ngrx/store"
-import { findProductByCategoryRequestFailure, findProductByCategoryRequestSuccess, findProductByIDRequestFailure, findProductByIDRequestSuccess, findproductbyParticularcategoryFailure, findproductbyParticularcategorySuccess } from "./product.action"
+import { findProductByCategoryRequestFailure, findProductByCategoryRequestSuccess, findProductByIDRequestFailure, findProductByIDRequestSuccess, findproductbyParticularcategoryFailure, findproductbyParticularcategorySuccess, reviewproductRequestFailure, reviewproductRequestSuccess } from "./product.action"
+
 
 const initialState={
     products:[],
     loading:false,
     error:null,
-    product:[]
+    product:[],
+    message:String,
+    reviews:null
 }
 
 export const productReducer = createReducer(
@@ -21,6 +24,7 @@ export const productReducer = createReducer(
      product : payload , 
      loading :false 
     })),
+
     on(findproductbyParticularcategorySuccess,(state,{payload})=>({
         ...state ,
          products : payload , 
@@ -28,9 +32,14 @@ export const productReducer = createReducer(
          loading :false 
     })),
 
+    on(reviewproductRequestSuccess,(state,{payload})=>({
+       ...state ,
+       message :payload,
+       loading :false
+    })),
+   
 
-
- on(findProductByCategoryRequestFailure,findProductByIDRequestFailure,findproductbyParticularcategoryFailure,(state,{error})=>({
+on(reviewproductRequestFailure,findProductByCategoryRequestFailure,findProductByIDRequestFailure,findproductbyParticularcategoryFailure,(state,{error})=>({
      ...state ,
      error:error ,
      loading :false 

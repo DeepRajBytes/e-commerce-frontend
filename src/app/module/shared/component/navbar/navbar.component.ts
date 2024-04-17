@@ -5,6 +5,8 @@ import { AuthComponent } from 'src/app/module/auth/auth.component';
 import { Userservice } from 'src/app/state/user/user.service';
 import { select, Store } from '@ngrx/store';
 import { AppState } from 'src/app/models/Appstate';
+import { AddressComponent } from '../address/address.component';
+import { DataserviceService } from 'src/app/services/dataservice.service';
 
 
 
@@ -19,9 +21,10 @@ export class NavbarComponent implements OnInit{
   isnavbarcontentisopen: boolean = false;
   currentsection: any;
   userProfile:any
+  userprofileaddress : any
   
 
-  constructor(private route :Router , private dialog : MatDialog ,private userService:Userservice , private store:Store<AppState>){}
+  constructor(private dataservice : DataserviceService,private user:Userservice,private route :Router , private dialog : MatDialog ,private userService:Userservice , private store:Store<AppState>){}
    
   
   
@@ -51,8 +54,9 @@ export class NavbarComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem("JWT")) this.userService.getUserProfile()
     
+    if(localStorage.getItem("JWT")) this.userService.getUserProfile()
+
     this.store.pipe(select((store)=>store.user)).subscribe((user)=>{
       this.userProfile = user.userProfile;
       if(user.userProfile){
@@ -101,4 +105,12 @@ export class NavbarComponent implements OnInit{
       
     })
     }
+
+    handleOpenAddressModal=()=> {
+      
+      this.dialog.open(AddressComponent,{
+        disableClose:false,
+        width:"400px",
+         })
+      }
 }

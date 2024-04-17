@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { catchError, map, of } from "rxjs";
 import { BASE_API_URL } from "src/app/config/api";
-import { findProductByCategoryRequestFailure, findProductByCategoryRequestSuccess, findProductByIDRequestFailure, findProductByIDRequestSuccess, findproductbyParticularcategoryFailure, findproductbyParticularcategorySuccess } from "./product.action";
+import { findProductByCategoryRequestFailure, findProductByCategoryRequestSuccess, findProductByIDRequestFailure, findProductByIDRequestSuccess, findproductbyParticularcategoryFailure, findproductbyParticularcategorySuccess, reviewproductRequestFailure, reviewproductRequestSuccess } from "./product.action";
 
 
 @Injectable({
@@ -36,7 +36,7 @@ export class ProductService {
         const headers = this.getHeader()
         const query = {params , headers }
         return this.http.get(`${this.API_BASE_URL}/api/products/`,query).pipe(map((data:any)=>{
-            console.log("fondeded product data by cat. ",data);
+            // console.log("fondeded product data by cat. ",data);
             
         return findProductByCategoryRequestSuccess({payload:data})
 
@@ -53,7 +53,7 @@ export class ProductService {
            
             
            return this.http.post(`${this.API_BASE_URL}/api/products/category`,category).pipe(map((data:any)=>{
-               console.log("foundeded particular wala data ",data);
+            //    console.log("foundeded particular wala data ",data);
                
                 return findproductbyParticularcategorySuccess({payload:data})
            }),catchError((error)=>{
@@ -81,8 +81,23 @@ export class ProductService {
         ).subscribe((action)=>this.store.dispatch(action));
     }
   
+    reviewProduct(reqData:any){
+        
+        const headers = this.getHeader();
+        
+        this.http.post(`${this.API_BASE_URL}/api/reviews/create`,reqData ,{headers}).pipe(map((data:any)=>{
+            // console.log("foundeded review wala data ",data);
+            return reviewproductRequestSuccess({payload:data})
+        }),catchError((error)=>{
+
+            console.log("received error in findbyid",error)
+            return of(reviewproductRequestFailure(error));
+        }))
+        .subscribe((action)=>this.store.dispatch(action));
+        }
 
 }
+
 
 
 

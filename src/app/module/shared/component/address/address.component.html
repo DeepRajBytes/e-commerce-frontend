@@ -1,0 +1,33 @@
+<div class="p-3">
+<div class="max-w-lg mx-auto">
+    <!-- Address Display -->
+    <div class="bg-black shadow-md rounded-md p-6 mb-6 text-white">
+      <h2 class="text-lg font-semibold mb-4">Your Address</h2>
+      <div class="flex items-center space-x-2 mb-2">
+        <div class="divide-y divide-gray-400">
+          <div class="py-2" *ngFor="let address of userProfile?.address " >
+              <span class="block text-gray-400">{{address.Name}}</span>
+              <span class="block text-gray-400">{{address.Mobile}}</span>
+              <span class="block text-gray-400">{{address.Address}}, {{address.City}}, {{address.Pincode}}</span>
+              
+            </div>
+            <mat-divider></mat-divider>
+      </div>
+      </div>
+      <!-- Map Embed -->
+      <div class="aspect-w-16 aspect-h-9 rounded-md overflow-hidden">
+        <!-- You can embed your map here -->
+        <!-- Example: -->
+        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.829064673049!2d3.372140114315131!3d6.550823124869012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8f41e645a09b%3A0x8d8b4006c95cfdfb!2sEiffel%20Tower!5e0!3m2!1sen!2sfr!4v1617645205100!5m2!1sen!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+      </div>
+    </div>
+  
+    <!-- Buttons -->
+    <div class="flex justify-between">
+      <!-- Find My Location Button -->
+      <button class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-md mr-4">Find My Location</button>
+      <!-- Add New Address Button -->
+      <button class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-md">Add New Address</button>
+    </div>
+  </div>
+</div>

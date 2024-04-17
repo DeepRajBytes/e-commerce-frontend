@@ -1,5 +1,5 @@
 <nav class="bg-[rgba(18,18,18,1)]  fixed top-0 z-50 left-0 right-0 lg:px-20">
-    <div class="max-w-screen-xl mx-auto px-4 py-4 lg:py-0 flex justify-between items-center">
+     <div class="max-w-screen-xl mx-auto px-4 py-4 lg:py-0 flex justify-between items-center">
         <div class="flex items-center space-x-4">
             <div>
                 <img class="w-8" src="https://i.pinimg.com/originals/8f/1c/96/8f1c96d6dfa3c3146ab165f30d6dbc2e.png">
@@ -21,6 +21,16 @@
             <button mat-icon-button (click)="navigatetocart()">
                 <mat-icon>shopping_cart</mat-icon>
           </button>
+          
+           
+         
+            <button  *ngIf="userProfile" (click)="handleOpenAddressModal()" mat-icon-button>
+                <mat-icon>add_location</mat-icon>
+            </button>
+         
+        
+          
+
 
             <button (click)="handleOpenLoginModal()" *ngIf="!userProfile" mat-raised-button color="warn">Login</button>
 

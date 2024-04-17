@@ -10,6 +10,7 @@ export class DataserviceService {
   constructor() { }
 
   setRelatedProductData(data: any) {
+    // console.log("data is ", data)
     this.relatedProductData = data;
   }
 
