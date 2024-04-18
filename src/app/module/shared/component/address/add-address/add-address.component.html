@@ -1,0 +1,45 @@
+<form [formGroup]="myform" (ngSubmit)="handlesubmit()" class="p-4 space-y-4">
+    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div>
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Name</mat-label>
+                <input formControlName="Name" matInput type="text" placeholder="Enter Full Name">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Mobile</mat-label>
+                <input formControlName="Mobile" matInput type="number" placeholder="Enter Mobile">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="w-full">
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Address</mat-label>
+            <textarea matInput rows="1" formControlName="Address"></textarea>
+        </mat-form-field>
+    </div>
+    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div>
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Pincode</mat-label>
+                <input formControlName="Pincode" matInput type="number" placeholder="Enter Pincode">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>City</mat-label>
+                <input formControlName="City" matInput type="text" placeholder="Enter City">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="w-full">
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>NearBy</mat-label>
+            <input matInput formControlName="NearBy" type="text" placeholder="Street, Temple, etc..">
+        </mat-form-field>
+    </div>
+    <div class="flex items-center">
+        <button type="submit" class="w-full" style="padding: 1rem;" mat-raised-button color="primary">Deliver Here</button>
+    </div>
+</form>

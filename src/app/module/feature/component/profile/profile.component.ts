@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import {  select, Store } from '@ngrx/store';
 import { AppState } from 'src/app/models/Appstate';
+import { AddAddressComponent } from 'src/app/module/shared/component/address/add-address/add-address.component';
 import { UpdateComponent } from 'src/app/module/update.component';
 import { Userservice } from 'src/app/state/user/user.service';
 
@@ -16,12 +17,15 @@ export class ProfileComponent implements OnInit{
   constructor(private dialog : MatDialog,private user:Userservice , private store: Store<AppState>){}
   
   ngOnInit(): void {
-    this.user.getUserProfileById();
+    // this.user.getUserProfileById();
 
     
     this.store.pipe(select(store => store.user)).subscribe((userProfile) => {
-      // console.log("user ka hai jo data", userProfile);
+      // console.log("user ka hai jo data", userProfile.address);
       this.userProfile = userProfile.userProfile; 
+      if( userProfile.userProfile){
+        this.dialog.closeAll();
+      }
       // console.log("set of profile data", this.userProfile);
     });
   }
@@ -33,5 +37,13 @@ export class ProfileComponent implements OnInit{
       data: { userProfile: this.userProfile }
     })
     }
+
+
+    openaddaddress=()=> {
+      this.dialog.open(AddAddressComponent,{
+        disableClose:false,
+        width:"450px",
+         })
+      }
 
 }

@@ -19,7 +19,12 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LoaderComponent } from './component/loader/loader.component';
 import { AddressComponent } from './component/address/address.component';
 import { AddReviewComponent } from './component/add-review/add-review.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddAddressComponent } from './component/address/add-address/add-address.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatInputModule } from '@angular/material/input';
 
  
 @NgModule({
@@ -35,6 +40,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoaderComponent,
     AddressComponent,
     AddReviewComponent,
+    AddAddressComponent,
     
     
     
@@ -47,9 +53,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatDividerModule,
     MatMenuModule,
     MatDialogModule,
+    MatCheckboxModule,
+    FormsModule,
+    MatRadioModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
+   
    
   ],
   exports:[

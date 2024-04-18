@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
 import { AppState } from 'src/app/models/Appstate';
 import { Userservice } from 'src/app/state/user/user.service';
+import { AddAddressComponent } from './add-address/add-address.component';
+
 
 @Component({
   selector: 'app-address',
@@ -16,25 +18,24 @@ export class AddressComponent implements OnInit{
  
  
   ngOnInit(): void {
-    // Call getUserProfileById() here to fetch user profile data
-    // this.user.getUserProfileById();
-
-    // Subscribe to user state changes to get user profile
-    this.store.pipe(select(store => store.user)).subscribe((userProfile) => {
+     this.store.pipe(select(store => store.user)).subscribe((userProfile) => {
       this.userProfile = userProfile.userProfile;
-      // Mark for check to update the view
-      this.cdr.detectChanges();
     });
-  }
-  // address():void{
-  //   this.user.getUserProfileById();
-  //   // this.store.pipe(select(store => store.user)).subscribe((userProfile) => {
-  //   //   // console.log("user ka hai jo data", userProfile);
-  //   //   this.userProfile = userProfile.userProfile; 
-  //   //   console.log("user sahab is", this.userProfile)
-  //   //   this.cdr.markForCheck();
-  //   //   // console.log("set of profile data", this.userProfile);
-  //   // });
-  // }
 
-}
+    this.store.pipe(select(store=>store.user)).subscribe((user)=>{
+      if(user.address){
+        this.dialog.closeAll();
+      }
+    })
+  }
+
+  
+    openaddaddress=()=> {
+      this.dialog.open(AddAddressComponent,{
+        disableClose:false,
+        width:"450px",
+         })
+      }
+  }
+  
+

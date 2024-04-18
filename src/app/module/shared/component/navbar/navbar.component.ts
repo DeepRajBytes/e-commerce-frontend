@@ -59,8 +59,9 @@ export class NavbarComponent implements OnInit{
 
     this.store.pipe(select((store)=>store.user)).subscribe((user)=>{
       this.userProfile = user.userProfile;
+      // console.log("user is ",user.userProfile)
       if(user.userProfile){
-        this.dialog.closeAll()
+        this.closeAuthDialog();
       }
     })
   }
@@ -98,10 +99,18 @@ export class NavbarComponent implements OnInit{
       this.closenavbarcontent();
     }
   }
+  closeAuthDialog() {
+   
+    const authDialogRef = this.dialog.getDialogById('auth-dialog');
+    if (authDialogRef) {
+      authDialogRef.close();
+    }
+  }
   handleOpenLoginModal=()=> {
     this.dialog.open(AuthComponent,{
       disableClose:false,
       width:"400px",
+      id: 'auth-dialog'
       
     })
     }
