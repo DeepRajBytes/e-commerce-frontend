@@ -28,9 +28,10 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { OrderCartComponent } from './component/order/order-cart/order-cart.component';
 import { ProfileComponent } from './component/profile/profile.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 
 
@@ -52,8 +53,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AddressformComponent,
     OrderCartComponent,
     ProfileComponent,
-   
-   
+    
   ],
   imports: [
     CommonModule,
@@ -72,8 +72,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatFormFieldModule,
     MatDialogModule ,
     ClipboardModule,
-    MatSnackBarModule
-    
+    MatSnackBarModule,
   ],
   exports:[
     HomeComponent,
@@ -82,6 +81,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ProductSliderComponent,
     ProductComponent
     
+  ],
+  providers: [
+    { provide: MAT_DIALOG_DATA, useValue: {} }
   ]
 })
 export class FeatureModule { }

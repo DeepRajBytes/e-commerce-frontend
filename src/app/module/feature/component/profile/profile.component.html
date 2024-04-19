@@ -29,9 +29,16 @@
                 </div>
                 <div class="divide-y divide-gray-200">
                     <div class="py-2" *ngFor="let address of userProfile?.address">
-                        <span class="block text-gray-900">{{address.Name}}</span>
-                        <span class="block text-gray-900">{{address.Mobile}}</span>
-                        <span class="block text-gray-900">{{address.Address}}, {{address.City}}, {{address.Pincode}}</span>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="block text-gray-900 font-semibold">{{address.Name}}</span>
+                                <span class="block text-gray-900">{{address.Mobile}}</span>
+                                <span class="block text-gray-900">{{address.Address}}, {{address.City}}, {{address.Pincode}}</span>
+                            </div>
+                            <button (click)="openupdatemodal(address)" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md">
+                                Edit
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

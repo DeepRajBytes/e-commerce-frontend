@@ -1,45 +1,49 @@
-<form [formGroup]="myform" (ngSubmit)="handlesubmit()" class="p-4 space-y-4">
-    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+<div class="bg-gray-800 rounded-lg shadow-lg p-6 w-full max-w-lg mx-auto text-white">
+    <h3 class="text-lg font-semibold mb-4">Add Address</h3>
+    <form [formGroup]="myform" (ngSubmit)="handlesubmit()" class="space-y-4">
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-            <mat-form-field appearance="fill" class="w-full">
-                <mat-label>Name</mat-label>
-                <input formControlName="Name" matInput type="text" placeholder="Enter Full Name">
-            </mat-form-field>
+          <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Name</mat-label>
+            <input formControlName="Name" matInput type="text" placeholder="Enter Full Name" class="rounded-md bg-gray-700 text-white border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-300">
+          </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="fill" class="w-full">
-                <mat-label>Mobile</mat-label>
-                <input formControlName="Mobile" matInput type="number" placeholder="Enter Mobile">
-            </mat-form-field>
+          <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Mobile</mat-label>
+            <input formControlName="Mobile" matInput type="number" placeholder="Enter Mobile" class="rounded-md bg-gray-700 text-white border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-300">
+          </mat-form-field>
         </div>
-    </div>
-    <div class="w-full">
+      </div>
+      <div>
         <mat-form-field appearance="fill" class="w-full">
-            <mat-label>Address</mat-label>
-            <textarea matInput rows="1" formControlName="Address"></textarea>
+          <mat-label>Address</mat-label>
+          <textarea matInput rows="2" formControlName="Address" placeholder="Enter Address" class="rounded-md bg-gray-700 text-white border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-300"></textarea>
         </mat-form-field>
-    </div>
-    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      </div>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-            <mat-form-field appearance="fill" class="w-full">
-                <mat-label>Pincode</mat-label>
-                <input formControlName="Pincode" matInput type="number" placeholder="Enter Pincode">
-            </mat-form-field>
+          <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Pincode</mat-label>
+            <input formControlName="Pincode" matInput type="number" placeholder="Enter Pincode" class="rounded-md bg-gray-700 text-white border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-300">
+          </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="fill" class="w-full">
-                <mat-label>City</mat-label>
-                <input formControlName="City" matInput type="text" placeholder="Enter City">
-            </mat-form-field>
+          <mat-form-field appearance="fill" class="w-full">
+            <mat-label>City</mat-label>
+            <input formControlName="City" matInput type="text" placeholder="Enter City" class="rounded-md bg-gray-700 text-white border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-300">
+          </mat-form-field>
         </div>
-    </div>
-    <div class="w-full">
+      </div>
+      <div>
         <mat-form-field appearance="fill" class="w-full">
-            <mat-label>NearBy</mat-label>
-            <input matInput formControlName="NearBy" type="text" placeholder="Street, Temple, etc..">
+          <mat-label>NearBy</mat-label>
+          <input matInput formControlName="NearBy" type="text" placeholder="Street, Temple, etc." class="rounded-md bg-gray-700 text-white border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-300">
         </mat-form-field>
-    </div>
-    <div class="flex items-center">
-        <button type="submit" class="w-full" style="padding: 1rem;" mat-raised-button color="primary">Deliver Here</button>
-    </div>
-</form>
+      </div>
+      <div class="flex justify-center">
+        <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-semibold transition duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400" mat-raised-button color="primary">Save Address</button>
+      </div>
+    </form>
+  </div>
+  

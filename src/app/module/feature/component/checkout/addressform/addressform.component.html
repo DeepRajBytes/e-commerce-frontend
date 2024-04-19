@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 gap-4 lg:grid-cols-12 px-5 lg:px-20">
+<!-- <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 px-5 lg:px-20">
 
     <div class="col-span-1 lg:col-span-5">
       
@@ -6,13 +6,17 @@
 
             <div class="p-5 py-7  cursor-pointer">
                 
-                <div *ngFor="let address of userProfile.address let last = last" class="py-2 space-y-2">
+                <div *ngFor="let address of userProfile?.address let last = last" class="py-2 space-y-2">
                    
                     <app-address-cart [address]="address"></app-address-cart>
                     
                     <button mat-raised-button style="padding: 1rem;" color="accent" (click)="handelcreateorder(address)">
                         Deliver Here
                     </button>
+                    <button mat-raised-button class="ml-4 px-4" color="primary" (click)="openupdatemodal(address)">
+                        Edit
+                    </button>
+                   
                     <mat-divider *ngIf="!last"></mat-divider>
 
                 </div>
@@ -83,13 +87,55 @@
                 <div class="flex items-center">
                     <button type="submit" class="w-full" style="padding: 1rem;"  mat-raised-button color="primary" >Deliver Here</button>
 
-                    <!-- <button mat-raised-button type="reset" class="ml-4" color="warn">Reset</button> -->
+                    <button mat-raised-button type="reset" class="ml-4" color="warn">Reset</button>
 
                 </div>
                
             </form>
 
 
+        </div>
+    </div>
+
+ </div> -->
+
+
+
+ <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 px-5 lg:px-20">
+
+    
+    <div class="col-span-1 lg:col-span-12">
+        <div class="rounded-md shadow-md h-[32.2rem] overflow-y-scroll hide-scrollbar box py-5">
+            
+           
+            <div class="p-5">
+                <button (click)="openAddressmodal()" class="w-full p-3 mb-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300" >
+                    Add New Address
+                </button>
+            </div>
+            
+           
+            <div class="p-5">
+                
+                <div *ngIf="userProfile.address.length === 0" class="p-4 text-center text-white bg-gray-700 rounded-md shadow-md">
+                    No address added till date. Please add an address.
+                </div>
+
+                
+                <div *ngIf="userProfile.address.length > 0" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div *ngFor="let address of userProfile.address" class="p-4 bg-gray-800 text-white rounded-md shadow-md hover:shadow-lg hover:bg-gray-700 hover:scale-105 transition duration-300 transform">
+                        <app-address-cart [address]="address"></app-address-cart>
+                        <div class="mt-4 flex space-x-4">
+                            <button (click)="handelcreateorder(address)" class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition duration-300" >
+                                Deliver Here
+                            </button>
+                            <button (click)="openupdatemodal(address)" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300" >
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -1,12 +1,17 @@
 import { createReducer, on } from "@ngrx/store";                                                      
-import { AddAddressSuccess, getUserProfile, getUserProfileFailure, getUserProfileSuccess, getUserProfileUpdateSuccess, logoutSuccess, updateProfile } from "./user.action";
+import { AddAddressSuccess, getUserProfile, getUserProfileFailure, getUserProfileSuccess, getUserProfileUpdateSuccess, logoutSuccess, updateAddress, updateAddressSuccess, updateUserProfile } from "./user.action";
 
-const initialState={
-    userProfile:null,
-    address:null,
-    loading:false,
-    error:null
-}
+
+
+
+const initialState= {
+  userProfile: null,
+  address: null,
+  loading: false,
+  error: null,
+  updatedaddress: null
+};
+
 export const userReducer = createReducer(
     initialState,
     on(getUserProfile , (state)=>({...state,loading:true,error:null})),
@@ -17,13 +22,36 @@ export const userReducer = createReducer(
   
    on(AddAddressSuccess, (state, { address }) => ({
     ...state,
-    address : address ,
-    loading:false
+    loading:true,
+    address: address
    })),
 
-    
 
-    
+   on(updateUserProfile, (state, { userProfile }) => ({
+    ...state,
+    userProfile,
+    loading: false,
+    error: null
+})),
+
+  // on(AddAddressSuccess, (state, { address }) => {
+  //   // Ensure state.userProfile is an object
+  //   const updatedUserProfile = {
+  //     ...(state.userProfile || {}), // Fallback to an empty object if userProfile is null
+  //     address,
+  //   };
+  //   return {
+  //     ...state,
+  //     loading: true,
+  //     userProfile: updatedUserProfile,
+  //   };
+  // }),
+   
+  on(updateAddressSuccess , (state ,{address})=>({
+    ...state,
+    address:address,
+    loading:true
+  })),
 
     // on(updateProfile, (state, { userProfile }) => ({
     //     ...state,
@@ -36,3 +64,41 @@ export const userReducer = createReducer(
     on(getUserProfileFailure , (state,{error})=>({...state,loading:true,error:error})),
     on(logoutSuccess,()=>initialState)
     )                  
+
+
+
+
+
+
+
+
+
+    // interface UserProfile {
+//     address: any[];
+//     // Add other properties as needed
+// }
+
+// interface UserState {
+//     userProfile: UserProfile | null;
+//     address: any | null;
+//     loading: boolean;
+//     error: any | null;
+//     updatedaddress: any | null;
+// }
+
+
+
+
+//   on(AddAddressSuccess, (state, { address }) => {
+//     // Add the new address to the userProfile's address array
+//     const updatedUserProfile = {
+//         ...state.userProfile,
+//         address: [...(state.userProfile?.address || []), address],
+//     };
+
+//     return {
+//         ...state,
+//         loading: false,
+//         userProfile: updatedUserProfile,
+//     };
+// }),

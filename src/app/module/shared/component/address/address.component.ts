@@ -4,6 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { AppState } from 'src/app/models/Appstate';
 import { Userservice } from 'src/app/state/user/user.service';
 import { AddAddressComponent } from './add-address/add-address.component';
+import { UpdateaddressComponent } from './updateaddress/updateaddress.component';
 
 
 @Component({
@@ -22,11 +23,31 @@ export class AddressComponent implements OnInit{
       this.userProfile = userProfile.userProfile;
     });
 
-    this.store.pipe(select(store=>store.user)).subscribe((user)=>{
-      if(user.address){
-        this.dialog.closeAll();
-      }
-    })
+  }
+
+  closeAuthDialog() {
+   
+    const authDialogRef = this.dialog.getDialogById('address-dialog');
+    if (authDialogRef) {
+      authDialogRef.close();
+    }
+  }
+  closeupdateDialog() {
+   
+    const authDialogRef = this.dialog.getDialogById('update-dialog');
+    if (authDialogRef) {
+      authDialogRef.close();
+    }
+  }
+
+  openupdatemodal(id:any){
+    // console.log("id is ",id)
+    this.dialog.open(UpdateaddressComponent,{
+      disableClose:false,
+      width:"450px",
+      id: 'update-dialog',
+      data: { address: id }
+       })
   }
 
   
@@ -34,6 +55,7 @@ export class AddressComponent implements OnInit{
       this.dialog.open(AddAddressComponent,{
         disableClose:false,
         width:"450px",
+        id: 'address-dialog'
          })
       }
   }

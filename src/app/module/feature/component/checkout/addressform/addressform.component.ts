@@ -1,7 +1,11 @@
+import { Dialog } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { AppState } from 'src/app/models/Appstate';
+import { AddAddressComponent } from 'src/app/module/shared/component/address/add-address/add-address.component';
+import { AddressComponent } from 'src/app/module/shared/component/address/address.component';
+import { UpdateaddressComponent } from 'src/app/module/shared/component/address/updateaddress/updateaddress.component';
 import { orderService } from 'src/app/state/orders/order.service';
 import { Userservice } from 'src/app/state/user/user.service';
 
@@ -18,17 +22,15 @@ export class AddressformComponent implements OnInit{
   userProfile: any;
 
 
-constructor(private fb:FormBuilder , private orderService : orderService , private user:Userservice , private store: Store<AppState>){}  
+constructor(private dialog:Dialog,private fb:FormBuilder , private orderService : orderService , private user:Userservice , private store: Store<AppState>){}  
 
 
 ngOnInit(): void {
-  this.user.getUserProfileById();
+  // this.user.getUserProfileById();
 
   
   this.store.pipe(select(store => store.user)).subscribe((userProfile) => {
-    console.log("user ka hai jo data", userProfile);
-    this.userProfile = userProfile.userProfile; 
-    console.log("set of profile data", this.userProfile);
+  this.userProfile = userProfile.userProfile; 
   });
 }
 
@@ -42,10 +44,39 @@ myform:FormGroup = this.fb.group({
   })
 
 
+  openAddressmodal(){
+    try {
+      this.dialog.open(AddAddressComponent, {
+          disableClose: false,
+          width: "450px",
+         
+      });
+  } catch (error) {
+      console.error("Failed to open the dialog:", error);
+  }
+  }
+
+
+  openupdatemodal(id:any){
+    console.log("id is ",id)
+    try {
+      this.dialog.open(AddressComponent, {
+          disableClose: false,
+          width: "450px",
+          data: { address: id },
+      });
+  } catch (error) {
+      console.error("Failed to open the dialog:", error);
+  }
+  }
+
 handlesubmit() {
-  const formValue =  this.myform.value
-   this.orderService.createOrder(formValue)
-   return console.log('address mil gya', formValue)
+  if(this.myform.valid){
+    const formValue =  this.myform.value
+    this.orderService.createOrder(formValue)
+    return console.log('address mil gya', formValue)
+  }
+  
   }
   
   handelcreateorder(id:any) {

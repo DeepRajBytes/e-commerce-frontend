@@ -36,16 +36,24 @@ export class ProductDetailsComponent implements OnInit {
     this.productId = id
      this.store.pipe(select(store => store.product)).subscribe((product) => {
       this.product = product?.product
-      console.log("product ye hai  chekc kar", this.product)
-    })   
+      // console.log("product ye hai  chekc kar", this.product)
+    }) 
+    
+    
+  //   this.store.pipe(select(store => store.product)).subscribe((product) => {
+  //     console.log("product",product);
+      
+  //     this.relatedproduct = product?.products?.content.filter((item: any) => item._id !== this.productId);
+  // })
+    
     this.fetchRelatedProducts();
    }
 
 
 
   async fetchRelatedProducts() {
-    this.relatedproduct = this.dataService.getRelatedProductData().filter((item: any) => item._id !== this.productId);;
-     console.log('Related Products:', this.relatedproduct);
+     this.relatedproduct = this.dataService.getRelatedProductData().filter((item: any) => item._id !== this.productId);;
+    //  console.log('Related Products:', this.relatedproduct);
     }
 
   reload(){

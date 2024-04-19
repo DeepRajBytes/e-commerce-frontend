@@ -13,7 +13,7 @@ import { StarComponent } from './component/star/star.component';
 import { CartitemComponent } from './component/cartitem/cartitem.component';
 import { AddressCartComponent } from './component/address-cart/address-cart.component';
 import { StaperComponent } from './component/staper/staper.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LoaderComponent } from './component/loader/loader.component';
@@ -25,6 +25,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
+import { UpdateaddressComponent } from './component/address/updateaddress/updateaddress.component';
 
  
 @NgModule({
@@ -41,6 +42,7 @@ import { MatInputModule } from '@angular/material/input';
     AddressComponent,
     AddReviewComponent,
     AddAddressComponent,
+    UpdateaddressComponent,
     
     
     
@@ -73,7 +75,10 @@ import { MatInputModule } from '@angular/material/input';
     CartitemComponent,
     AddressCartComponent,
     StaperComponent,
-    LoaderComponent
+    LoaderComponent,
+  ],
+  providers: [
+    { provide: MAT_DIALOG_DATA, useValue:{}}
   ]
 })
 export class SharedModule { }

@@ -21,6 +21,7 @@ import { cartReducer } from './state/cart/cart.reducer';
 import { UpdateModule } from './module/update/update.module';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { InterceptorService } from './services/interceptor.service';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -35,7 +36,7 @@ import { InterceptorService } from './services/interceptor.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatProgressBarModule,
-
+    MatDialogModule,
     // made module 
     FeatureModule,
     SharedModule,
@@ -51,7 +52,8 @@ import { InterceptorService } from './services/interceptor.service';
       cart: cartReducer
     })
   ],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true}],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

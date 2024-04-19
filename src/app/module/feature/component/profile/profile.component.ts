@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import {  select, Store } from '@ngrx/store';
 import { AppState } from 'src/app/models/Appstate';
 import { AddAddressComponent } from 'src/app/module/shared/component/address/add-address/add-address.component';
+import { UpdateaddressComponent } from 'src/app/module/shared/component/address/updateaddress/updateaddress.component';
 import { UpdateComponent } from 'src/app/module/update.component';
 import { Userservice } from 'src/app/state/user/user.service';
 
@@ -36,6 +37,21 @@ export class ProfileComponent implements OnInit{
       width:"400px",   
       data: { userProfile: this.userProfile }
     })
+    }
+
+    openupdatemodal(id:any){
+      console.log("id is ",id)
+      this.dialog.open(UpdateaddressComponent,{
+        disableClose:false,
+        width:"450px",
+        id: 'update-dialog',
+        data: { address: id }
+         })
+      // this.dialog.open(UpdateaddressComponent,{
+      //   disableClose:false,
+      //   width:"400px",   
+      //   data: { userProfile: this.userProfile }
+      // })
     }
 
 

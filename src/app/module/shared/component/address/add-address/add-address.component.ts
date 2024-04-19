@@ -24,10 +24,28 @@ export class AddAddressComponent {
   
   
   handlesubmit() {
-    
+    if(this.myform.valid){
       // const formValue =  this.myform.value
-      console.log("this is my form value",this.myform.value)
+      // console.log("this is my form value",this.myform.value)
       this.UserService.Addaddress(this.myform.value);
-   }
-    
+
+
+      this.store.pipe(select(store => store.user)).subscribe((user) => {
+        console.log("user state", user)
+        if (user.userProfile) {
+          this.dialog.closeAll()
+          // this.closeDialog();
+         }
+     
+     })
+  }
+}
+
+
+closeDialog() {
+  const dialogRef = this.dialog.getDialogById('address-dialog');
+  if (dialogRef) {
+      dialogRef.close();
+  }
+}
 }
