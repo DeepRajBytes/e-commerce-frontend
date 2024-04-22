@@ -26,7 +26,7 @@
                 <button class="flex" *ngIf="userProfile" (click)="handleOpenAddressModal()" mat-icon-button>
                 <mat-icon>add_location</mat-icon>
             </button>
-            <div *ngIf="defaultAddress" class="ml-3 text-sm text-gray-300">
+            <div *ngIf="defaultAddress" class="ml-3 text-sm text-gray-300" [ngClass]="{'scale-animation': isDefaultAddress(defaultAddress)}">
                 <p>{{defaultAddress?.City}},<br> {{defaultAddress?.Pincode}}</p>
             </div>
            
@@ -36,9 +36,11 @@
             
             
             <!-- Profile and menu options -->
-            <button (click)="handleOpenLoginModal()" *ngIf="!userProfile" mat-raised-button color="warn">Login</button>
+            <button class="scale-animation" (click)="handleOpenLoginModal()" *ngIf="!userProfile" mat-raised-button color="warn">Login</button>
+
             <div *ngIf="userProfile" class="flex items-center space-x-4">
                 <span class="font-bold text-lg text-gray-100">{{userProfile.firstname}}</span>
+
                 <button mat-button [matMenuTriggerFor]="profilemenu">
                     <img class="h-8 w-8" src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671116.jpg?w=740" alt="User Profile">
                 </button>

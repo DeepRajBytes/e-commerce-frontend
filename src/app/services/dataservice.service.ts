@@ -25,8 +25,9 @@ export class DataserviceService {
 
   setdefaultaddress(data:any){
     
-    this.defaultaddress = data  
-    console.log("default data is ",this.defaultaddress);
+    this.defaultaddress = data ;
+    this.defaultAddressChanged.next(data); 
+    // console.log("default data is ",this.defaultaddress);
   }
   getdefaultaddress(){
     return this.defaultaddress;

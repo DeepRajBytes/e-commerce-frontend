@@ -63,9 +63,14 @@ export class AddressComponent implements OnInit{
       makeaddress(address:any){
         this.dataservice.setdefaultaddress(address)
         if(address){
-          // this.dialog.closeAll()
+          this.dialog.closeAll()
         }
       }
+
+      isDefaultAddress(address: any): boolean {
+        return this.dataservice.getdefaultaddress() && this.dataservice.getdefaultaddress() === address;
+    }
+    
 
   }
   

@@ -14,7 +14,7 @@
                   <span class="block text-gray-200">{{address.Mobile}}</span>
                   <span class="block text-gray-200">{{address.Address}}, {{address.City}}, {{address.Pincode}}</span>
                   <!-- Default address line -->
-                  <div *ngIf="i === 0" class="blink-animation">
+                  <div *ngIf="isDefaultAddress(address)" class="blink-animation">
                     <div>
                       <span class="block text-gray-200">Default Address</span>
                     </div>

@@ -4,3 +4,34 @@
     width: 99px;
     // background-blend-mode: ;
 }
+
+
+@keyframes blink {
+    0%, 25%,75%, 100% {
+      opacity: 1;
+    }
+     50% {
+      opacity: 0;
+    }
+  }
+  
+  .blink-animation {
+    animation: blink 3s infinite;
+  }
+
+
+  @keyframes pulse {
+    0%,50%, 100% {
+        transform: scale(1);
+    }
+    25%,75% {
+        transform: scale(1.2);
+    }
+}
+
+  
+  .scale-animation {
+    animation: pulse 3s infinite;
+  }
+  
+
