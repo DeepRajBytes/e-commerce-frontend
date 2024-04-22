@@ -9,6 +9,8 @@ import {MatInputModule} from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from "../shared/shared.module";
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from 'src/app/services/interceptor.service';
 
 
 
@@ -26,6 +28,8 @@ import { SharedModule } from "../shared/shared.module";
         MatSelectModule,
         ReactiveFormsModule,
         SharedModule
-    ]
+    ],
+    providers: [{provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true},
+    ],
 })
 export class AuthModule { }
