@@ -26,6 +26,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
 import { UpdateaddressComponent } from './component/address/updateaddress/updateaddress.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from 'src/app/services/interceptor.service';
 
  
 @NgModule({
@@ -78,7 +80,8 @@ import { UpdateaddressComponent } from './component/address/updateaddress/update
     LoaderComponent,
   ],
   providers: [
-    { provide: MAT_DIALOG_DATA, useValue:{}}
+   {provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true},
+   
   ]
 })
 export class SharedModule { }

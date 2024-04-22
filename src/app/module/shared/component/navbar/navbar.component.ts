@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
   userprofileaddress: any
 
 
-  constructor(private dataservice: DataserviceService, private user: Userservice, private route: Router, private dialog: MatDialog, private userService: Userservice, private store: Store<AppState>, private cdr: ChangeDetectorRef) { }
+  constructor(private dataservice: DataserviceService, private user: Userservice, private route: Router, private dialog: MatDialog, private userService: Userservice, private store: Store<AppState>) { }
 
 
   ngOnInit(): void {
@@ -49,8 +49,7 @@ export class NavbarComponent implements OnInit {
       // Subscribe to changes in the default address
       this.dataservice.defaultAddressChanged.subscribe((address) => {
         this.defaultAddress = address;
-        this.cdr.detectChanges(); // Notify change detection system
-        console.log("check changing part of the code",this.defaultAddress);
+      
       });
     })
   }
@@ -64,9 +63,9 @@ export class NavbarComponent implements OnInit {
 
 
 
-  toggleNavbar() {
-    this.isNavbarOpen = !this.isNavbarOpen;
-  }
+  // toggleNavbar() {
+  //   this.isNavbarOpen = !this.isNavbarOpen;
+  // }
 
   navigateto(path: any) {
     this.isnavbarcontentisopen = !this.isnavbarcontentisopen;

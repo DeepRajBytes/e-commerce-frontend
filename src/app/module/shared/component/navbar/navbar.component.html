@@ -1,12 +1,9 @@
-<nav class="bg-[rgba(18,18,18,1)] fixed top-0 z-50 left-0 right-0 lg:px-20">
+<nav class="bg-[rgba(18,18,18,1)] fixed top-0 z-50 left-0 right-0 lg:px-14">
     <div class="max-w-screen-xl mx-auto px-4 py-4 lg:py-0 flex justify-between items-center">
         <!-- Left section (logo and title) -->
         <div class="flex items-center space-x-4">
-            <img class="w-8" src="https://i.pinimg.com/originals/8f/1c/96/8f1c96d6dfa3c3146ab165f30d6dbc2e.png" alt="Logo">
+            <img class="w-7" src="https://i.pinimg.com/originals/8f/1c/96/8f1c96d6dfa3c3146ab165f30d6dbc2e.png" alt="Logo">
             <a routerLink="/" class="text-gray-100 font-medium text-lg">DEEPRAJ FASHION</a>
-            <button class="open-button md:hidden" mat-button (click)="toggleNavbar()">
-                <!-- Menu button for mobile -->
-            </button>
         </div>
 
         <!-- Right section (menu items and profile menu) -->
@@ -30,7 +27,7 @@
                 <mat-icon>add_location</mat-icon>
             </button>
             <div *ngIf="defaultAddress" class="ml-3 text-sm text-gray-300">
-                <p>{{defaultAddress?.City}}, {{defaultAddress?.Pincode}}</p>
+                <p>{{defaultAddress?.City}},<br> {{defaultAddress?.Pincode}}</p>
             </div>
            
         </div>
