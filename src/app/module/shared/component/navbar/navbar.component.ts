@@ -58,7 +58,7 @@ export class NavbarComponent implements OnInit {
   }
 
   isDefaultAddress(address: any): boolean {
-    return this.defaultAddress && this.defaultAddress === address;
+   return this.defaultAddress && this.defaultAddress === address;
 }
 
 
@@ -144,6 +144,7 @@ export class NavbarComponent implements OnInit {
     this.dialog.open(AddressComponent, {
       disableClose: false,
       width: "400px",
+      id: 'address-dialog'
     })
   }
 }
