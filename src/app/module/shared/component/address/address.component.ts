@@ -5,17 +5,18 @@ import { AppState } from 'src/app/models/Appstate';
 import { Userservice } from 'src/app/state/user/user.service';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { UpdateaddressComponent } from './updateaddress/updateaddress.component';
+import { DataserviceService } from 'src/app/services/dataservice.service';
 
 
 @Component({
   selector: 'app-address',
   templateUrl: './address.component.html',
   styleUrls: ['./address.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddressComponent implements OnInit{
   userProfile:any = null
-  constructor(private dialog : MatDialog,private user:Userservice , private store: Store<AppState> , private cdr : ChangeDetectorRef){}
+  constructor(private dialog : MatDialog,private user:Userservice , private store: Store<AppState> , private dataservice:DataserviceService){}
  
  
   ngOnInit(): void {
@@ -58,6 +59,14 @@ export class AddressComponent implements OnInit{
         id: 'address-dialog'
          })
       }
+
+      makeaddress(address:any){
+        this.dataservice.setdefaultaddress(address)
+        if(address){
+          // this.dialog.closeAll()
+        }
+      }
+
   }
   
 

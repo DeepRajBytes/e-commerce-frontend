@@ -19,13 +19,13 @@ import { AddReviewComponent } from 'src/app/module/shared/component/add-review/a
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
-
+  
   selectedsize: any;
   reviews =[1,2,3];
   relatedproduct:any 
   product: any;
   productId : any;
-  
+  currentImageUrl : string = '';
 
   constructor(private snackBar: MatSnackBar,private dialog: MatDialog, private route: Router, private productService: ProductService, private activeRoute: ActivatedRoute, private store: Store<AppState>, private cartService: CartService , private dataService: DataserviceService) {}
 
@@ -36,7 +36,8 @@ export class ProductDetailsComponent implements OnInit {
     this.productId = id
      this.store.pipe(select(store => store.product)).subscribe((product) => {
       this.product = product?.product
-      // console.log("product ye hai  chekc kar", this.product)
+      this.currentImageUrl = this.product.imageUrl;
+      console.log("product ye hai  chekc kar", this.product)
     }) 
     
     
@@ -49,6 +50,10 @@ export class ProductDetailsComponent implements OnInit {
     this.fetchRelatedProducts();
    }
 
+
+   selectColor(image: any): void {
+    this.currentImageUrl = image.urls;
+}
 
 
   async fetchRelatedProducts() {
@@ -94,7 +99,7 @@ export class ProductDetailsComponent implements OnInit {
       return; 
     }
 
-    const data = { size: this.selectedsize, productId: this.productId }
+    const data = { size: this.selectedsize, productId: this.productId ,color:this.selectColor}
     this.cartService.additemTocart(data);
 
     this.snackBar.open('Item Added To Cart', 'Dismiss', {
@@ -122,8 +127,8 @@ export class ProductDetailsComponent implements OnInit {
       });
       return; 
     }
-
-    const data = { size: this.selectedsize, productId: this.productId }
+    // console.log("that is the color",this.selectColor)
+    const data = { size: this.selectedsize, productId: this.productId  }
     this.cartService.additemTocart(data);
 
   

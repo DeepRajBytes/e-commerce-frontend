@@ -6,22 +6,24 @@
         <div class="flex items-center space-x-2 mb-2">
           <div class="divide-y divide-gray-400 w-full">
             <div class="py-2" *ngFor="let address of userProfile?.address; let i = index">
-              <div class="flex justify-between items-center bg-gray-900 rounded-md p-4 mb-2">
+              <div (click)="makeaddress(address)"
+                class="flex justify-between items-center bg-gray-900 rounded-md p-4 mb-2">
                 <div>
                   <span class="block text-gray-200">{{address.Name}}</span>
                   <span class="block text-gray-200">{{address.Mobile}}</span>
                   <span class="block text-gray-200">{{address.Address}}, {{address.City}}, {{address.Pincode}}</span>
-                   <!-- Default address line -->
-            <div *ngIf="i === 0" class="blink-animation">
-              <div>
-                <span class="block text-gray-200">Default Address</span>
-              </div>
-            </div>
+                  <!-- Default address line -->
+                  <div *ngIf="i === 0" class="blink-animation">
+                    <div>
+                      <span class="block text-gray-200">Default Address</span>
+                    </div>
+                  </div>
                 </div>
-                <button (click)="openupdatemodal(address)" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-md ml-4">Edit</button>
+                <button (click)="openupdatemodal(address)"
+                  class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-md ml-4">Edit</button>
               </div>
             </div>
-           
+
           </div>
         </div>
       </div>
@@ -37,9 +39,28 @@
     <!-- Buttons -->
     <div class="flex justify-between">
       <!-- Find My Location Button -->
-      <button class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-md mr-4">Find My Location</button>
+      <button class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-md mr-4">Find My
+        Location</button>
       <!-- Add New Address Button -->
-      <button (click)="openaddaddress()" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-md">Add New Address</button>
+      <button (click)="openaddaddress()"
+        class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-md">Add New Address</button>
     </div>
   </div>
 </div>
+
+
+
+<!-- <div class="py-2" *ngFor="let address of userProfile?.address; let i = index">
+  <div (click)="makeaddress(address)" class="flex justify-between items-center bg-gray-900 rounded-md p-4 mb-2">
+    <div>
+      <span class="block text-gray-200">{{address.Name}}</span>
+      <span class="block text-gray-200">{{address.Mobile}}</span>
+      <span class="block text-gray-200">{{address.Address}}, {{address.City}}, {{address.Pincode}}</span>
+    
+      <div *ngIf="i === 0" class="blink-animation">
+        <div>
+          <span class="block text-gray-200">Default Address</span>
+        </div>
+      </div>
+    </div>
+  </div> -->
