@@ -51,8 +51,6 @@
             <div>
                 <p class="text-gray-600">
                     {{product.description}}
-                    
-                    
                 </p>
                 
             </div>
@@ -194,7 +192,7 @@
         <div class="flex flex-wrap justify-around">
 
              <div *ngFor="let item of relatedproduct.slice(0,4)">
-                <div (click)="reload()">
+                <div (click)="reload(item)">
             <app-product-cart [product]="item"></app-product-cart>
                  </div>
             </div>

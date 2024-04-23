@@ -36,7 +36,7 @@ constructor(private productSerivce : ProductService , private store:Store<AppSta
     product.products.content.forEach((item: any) => {
       if (item.category.name == 'men_jeans') {
         this.menjeans = [...this.menjeans,item]
-        console.log("item if this is filter", this.menjeans)
+        // console.log("item if this is filter", this.menjeans)
        }
        else if(item.category.name == 'mens_kurta'){
         this.menskurta = [...this.menskurta,item]

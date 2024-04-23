@@ -29,3 +29,10 @@ export const updateAddressFailure = createAction('[User] Get User Profile failur
 
 export const updateUserProfile = createAction('[User] Update User Profile', props<{ userProfile: any }>());
 
+
+
+export const getwishlist = createAction('[User] Get User')
+
+export const getwishlistSuccess = createAction('[User] Get User Profile success',props<{wishlist:any}>())
+
+export const getwishlistFailure = createAction('[User] Get User Profile failure',props<{error:any}>())

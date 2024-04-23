@@ -1,5 +1,6 @@
 import { createReducer, on } from "@ngrx/store"
-import { findProductByCategoryRequestFailure, findProductByCategoryRequestSuccess, findProductByIDRequestFailure, findProductByIDRequestSuccess, findproductbyParticularcategoryFailure, findproductbyParticularcategorySuccess, reviewproductRequestFailure, reviewproductRequestSuccess, updateProduct } from "./product.action"
+import { findProductByCategoryRequestFailure, findProductByCategoryRequestSuccess, findProductByIDRequestFailure, findProductByIDRequestSuccess, findproductbyParticularcategoryFailure, findproductbyParticularcategorySuccess, reviewproductRequestFailure, reviewproductRequestSuccess, updateProduct, wishlistRequestSuccess } from "./product.action"
+
 
 
 const initialState={
@@ -8,7 +9,8 @@ const initialState={
     error:null,
     product:[],
     message:'',
-    reviews:null
+    reviews:null,
+    deep:''
 }
 
 export const productReducer = createReducer(
@@ -28,7 +30,7 @@ export const productReducer = createReducer(
     on(findproductbyParticularcategorySuccess,(state,{payload})=>({
         ...state ,
          products : payload , 
-         content : payload.content ,
+         content : payload?.content ,
          loading :false 
     })),
 
@@ -38,6 +40,11 @@ export const productReducer = createReducer(
        
         message: JSON.stringify(payload), 
         loading: false
+    })),
+    on(wishlistRequestSuccess , (state,{messay})=>({
+        ...state,
+        deep:messay,
+        loading:false
     })),
     
     on(updateProduct, (state, { product }) => ({

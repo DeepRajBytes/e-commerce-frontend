@@ -10,6 +10,7 @@ import { PaymentSuccessComponent } from './module/feature/component/payment-succ
 import { OrderComponent } from './module/feature/component/order/order.component';
 import { OrderDetailsComponent } from './module/feature/component/order-details/order-details.component';
 import { ProfileComponent } from './module/feature/component/profile/profile.component';
+import { WishlistComponent } from './module/feature/component/wishlist/wishlist.component';
 
 
 const routes: Routes = [
@@ -30,8 +31,8 @@ const routes: Routes = [
   {path:'account/order',component:OrderComponent},
   {path:'order/:id',component:OrderDetailsComponent},
   {path:'profile',component:ProfileComponent},
-  {path:'payment-success', component:PaymentSuccessComponent}
-  
+  {path:'payment-success', component:PaymentSuccessComponent},
+  {path:'wishlist', component:WishlistComponent}
   
 
 ];

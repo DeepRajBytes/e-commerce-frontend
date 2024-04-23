@@ -3,7 +3,8 @@ import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { catchError, map, of } from "rxjs";
 import { BASE_API_URL } from "src/app/config/api";
-import { AddAddressFailure, AddAddressSuccess, getUserProfileFailure, getUserProfileSuccess, getUserProfileUpdateSuccess, logoutSuccess, updateAddressFailure, updateAddressSuccess, updateUserProfile,  } from "./user.action";
+import { AddAddressFailure, AddAddressSuccess, getUserProfileFailure, getUserProfileSuccess, getUserProfileUpdateSuccess, logoutSuccess, updateAddressFailure, updateAddressSuccess, updateUserProfile, getwishlistFailure, getwishlistSuccess,  } from "./user.action";
+
 
 @Injectable({
     providedIn: 'root',
@@ -106,6 +107,25 @@ export class Userservice {
        
     }
    
+
+
+    wishlist() {
+       
+        const headers=new HttpHeaders().set("Authorization", `Bearer ${localStorage.getItem("JWT")}`);
+       
+        return this.http.get(`${this.apiUrl}/wishlist`, {headers}).pipe(
+            map((user: any) => {
+                console.log("wishlist to aayi hai",user);
+                // return user;
+                return getwishlistSuccess({wishlist: user });
+            }),
+            catchError((error) => {
+                console.error("Error fetching user profile:", error);
+                return of(getwishlistFailure(error));
+            })
+        )
+        .subscribe((action) => this.store.dispatch(action));
+    }
     
 
     logout(){

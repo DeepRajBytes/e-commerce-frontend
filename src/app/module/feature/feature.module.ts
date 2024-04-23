@@ -31,6 +31,7 @@ import { ProfileComponent } from './component/profile/profile.component';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { WishlistComponent } from './component/wishlist/wishlist.component';
 
 
 
@@ -53,6 +54,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AddressformComponent,
     OrderCartComponent,
     ProfileComponent,
+    WishlistComponent,
     
   ],
   imports: [

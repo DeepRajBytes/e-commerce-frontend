@@ -10,9 +10,8 @@ import { Router } from '@angular/router';
 export class HomeProductCardComponent {
    @Input() product: any;
    constructor(private route:Router){}
-
-   details(id:any){
+    
+    details(id:any){
     this.route.navigate([`product-details/${id}`])
    }
-
 }

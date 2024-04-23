@@ -32,14 +32,14 @@ export class NavbarComponent implements OnInit {
     if (localStorage.getItem("JWT")) this.userService.getUserProfile()
 
     this.store.pipe(select((store) => store.user)).subscribe((user) => {
-      this.userProfile = user.userProfile;
-      console.log("user is ", user.userProfile)
+      this.userProfile = user?.userProfile;
+      // console.log("user is ", user.userProfile)
       if (user.userProfile) {
         // this.closeAuthDialog();
         this.dialog.closeAll();
 
       }
-      const defaultAddresss = this.userProfile.address[0]; // Index 0 address
+      const defaultAddresss = this.userProfile?.address[0]; // Index 0 address
       if (defaultAddresss) {
         this.dataservice.setdefaultaddress(defaultAddresss);
       }
@@ -105,6 +105,9 @@ export class NavbarComponent implements OnInit {
     window.location.reload();
   }
 
+  // navigatetowishlist(){
+  // this.route.navigate(['/wishlist'])
+  // }
 
 
   @HostListener('document:click', ['$event'])

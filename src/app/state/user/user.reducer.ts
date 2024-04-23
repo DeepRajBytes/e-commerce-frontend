@@ -1,5 +1,6 @@
 import { createReducer, on } from "@ngrx/store";                                                      
-import { AddAddressSuccess, getUserProfile, getUserProfileFailure, getUserProfileSuccess, getUserProfileUpdateSuccess, logoutSuccess, updateAddress, updateAddressSuccess, updateUserProfile } from "./user.action";
+import { AddAddressSuccess, getUserProfile, getUserProfileFailure, getUserProfileSuccess, getUserProfileUpdateSuccess, logoutSuccess, updateAddress, updateAddressSuccess, updateUserProfile, getwishlist, getwishlistSuccess } from "./user.action";
+
 
 
 
@@ -9,7 +10,8 @@ const initialState= {
   address: null,
   loading: false,
   error: null,
-  updatedaddress: null
+  updatedaddress: null,
+  wishlist:null
 };
 
 export const userReducer = createReducer(
@@ -25,6 +27,7 @@ export const userReducer = createReducer(
     loading:true,
     address: address
    })),
+   on(getwishlistSuccess , (state,{wishlist})=>({...state,loading:true,error:null,wishlist})),
 
 
    on(updateUserProfile, (state, { userProfile }) => ({

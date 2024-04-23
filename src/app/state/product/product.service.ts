@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { catchError, map, of } from "rxjs";
 import { BASE_API_URL } from "src/app/config/api";
-import { findProductByCategoryRequestFailure, findProductByCategoryRequestSuccess, findProductByIDRequestFailure, findProductByIDRequestSuccess, findproductbyParticularcategoryFailure, findproductbyParticularcategorySuccess, reviewproductRequestFailure, reviewproductRequestSuccess, updateProduct } from "./product.action";
+import { findProductByCategoryRequestFailure, findProductByCategoryRequestSuccess, findProductByIDRequestFailure, findProductByIDRequestSuccess, findproductbyParticularcategoryFailure, findproductbyParticularcategorySuccess, reviewproductRequestFailure, reviewproductRequestSuccess, updateProduct, wishlistRequestSuccess } from "./product.action";
 
 
 @Injectable({
@@ -97,48 +97,19 @@ export class ProductService {
         .subscribe((action)=>this.store.dispatch(action));
         }
 
+
+    addProductwishlist(productId:any){
+        console.log("product id wishlist",productId);
+        const headers = this.getHeader();
+
+        this.http.post(`${this.API_BASE_URL}/api/products/wishlist`,productId,{headers}).pipe(map((data:any)=>{
+            // console.log("wishlisyt me add karne par",data)
+            return wishlistRequestSuccess({messay:data})
+        }),catchError((error)=>{
+
+            console.log("received error in findbyid",error)
+            return of(reviewproductRequestFailure(error));
+        })).subscribe((action)=>this.store.dispatch(action));
+    }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// chat gpt wala
-// findProductByCategory(reqData: any) {
-//     const { color, sizes, minPrice, maxPrice, minDiscount, category, pageSize, pageNumber, stock, sort } = reqData;
-
-//     let params = new HttpParams()
-//         .set("color", color)
-//         .set("sizes", sizes)
-//         .set("minPrice", minPrice)
-//         .set("maxPrice", maxPrice)
-//         .set("minDiscount", minDiscount)
-//         .set("category", category)
-//         .set("pageSize", pageSize)
-//         .set("pageNumber", pageNumber)
-//         .set("stock", stock)
-//         .set("sort", sort);
-
-//     const headers = this.getHeader();
-
-//     return this.http.get(`${this.API_BASE_URL}/api/products/`, { headers, params }).pipe(
-//         map((data: any) => {
-//             console.log("Found product data by category: ", data);
-//             return findProductByCategoryRequestSuccess({ payload: data });
-//         }),
-//         catchError((error) => {
-//             console.log("Received error in findProductByCategory: ", error);
-//             return of(findProductByCategoryRequestFailure(error));
-//         })
-//     );
-// }

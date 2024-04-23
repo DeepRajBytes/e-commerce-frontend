@@ -66,7 +66,10 @@ export class AddressComponent implements OnInit{
         if(address){
           const addressDialogRef = this.dialog.getDialogById('address-dialog');
           if (addressDialogRef) {
+            setTimeout(() => {
               addressDialogRef.close();
+            }, 500);
+              
           }
         }
       }

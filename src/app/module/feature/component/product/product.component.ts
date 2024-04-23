@@ -211,7 +211,7 @@ export class ProductComponent implements OnInit {
     })
 
     this.store.pipe(select(store => store.product)).subscribe((product) => {
-      console.log("product",product);
+      // console.log("product",product);
       
       this.products = product?.products?.content;
       this.totalPages = product?.products?.totalPages;

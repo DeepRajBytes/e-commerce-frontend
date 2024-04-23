@@ -37,7 +37,7 @@ export class ProductDetailsComponent implements OnInit {
      this.store.pipe(select(store => store.product)).subscribe((product) => {
       this.product = product?.product
       this.currentImageUrl = this.product.imageUrl;
-      console.log("product ye hai  chekc kar", this.product)
+      // console.log("product ye hai  chekc kar", this.product)
     }) 
     
     
@@ -58,10 +58,12 @@ export class ProductDetailsComponent implements OnInit {
 
   async fetchRelatedProducts() {
      this.relatedproduct = this.dataService.getRelatedProductData().filter((item: any) => item._id !== this.productId);;
-    //  console.log('Related Products:', this.relatedproduct);
+     console.log('Related Products:', this.relatedproduct);
     }
 
-  reload(){
+  reload(id:any){
+    // console.log("click par yeh ", id);
+    // this.route.navigate([`product-details/${id._id}`])
     window.location.reload();
   }
 
@@ -132,10 +134,9 @@ export class ProductDetailsComponent implements OnInit {
     this.cartService.additemTocart(data);
 
   
-    this.cartService.getCart()
+    await this.cartService.getCart()
 
-   
-      this.route.navigate(['/cart']);
+    this.route.navigate(['/cart']);
     
   }
 }
