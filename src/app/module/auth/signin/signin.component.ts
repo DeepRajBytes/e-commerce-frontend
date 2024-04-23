@@ -25,8 +25,5 @@ submitForm():void{
   if(this.loginForm.valid){
     this.authSerive.login(this.loginForm.value)
   }
-  
-}
-
-
+  }
 }
