@@ -196,9 +196,9 @@
             <!-- Pagination controls -->
             <div class="flex justify-center my-4">
                 <button class="px-4 py-2 bg-blue-400 rounded-md mr-2 hover:bg-gray-300 focus:outline-none focus:bg-gray-300 transition duration-300"
-                  [disabled]="currentPage === 1" (click)="previousPage()">Previous</button>
+                  [disabled]="currentPage === 1" (click)="previousPage()" *ngIf="showPreviousButton">Previous</button>
                 <button  class="px-4 py-2 bg-blue-400 rounded-md hover:bg-gray-300 focus:outline-none focus:bg-gray-300 transition duration-300"
-                  [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+                  [disabled]="currentPage === totalPages" (click)="nextPage()" *ngIf="showNextButton">Next</button>
               </div>
               
           </div>

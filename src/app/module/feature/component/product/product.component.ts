@@ -265,4 +265,13 @@ export class ProductComponent implements OnInit {
     this.router.navigate([], { queryParams })
 
   }
+
+  get showPreviousButton(): boolean {
+    return this.currentPage > 1;
+}
+
+get showNextButton(): boolean {
+    return this.currentPage < this.totalPages;
+}
+
 }
