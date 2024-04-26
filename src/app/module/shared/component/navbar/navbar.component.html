@@ -42,7 +42,7 @@
                 <span class="font-bold text-lg text-gray-100">{{userProfile.firstname}}</span>
 
                 <button mat-button [matMenuTriggerFor]="profilemenu">
-                    <img class="h-8 w-8" src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671116.jpg?w=740" alt="User Profile">
+                    <img class="h-8 w-8" [src]='userProfile.avatar' alt="User Profile">
                 </button>
                 <mat-menu #profilemenu="matMenu">
                     <button mat-menu-item (click)="naviagtetoorders()">Orders</button>

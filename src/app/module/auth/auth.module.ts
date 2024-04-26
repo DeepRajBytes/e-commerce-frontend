@@ -11,6 +11,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from "../shared/shared.module";
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from 'src/app/services/interceptor.service';
+import { MatIconModule } from '@angular/material/icon';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 
@@ -27,8 +29,10 @@ import { InterceptorService } from 'src/app/services/interceptor.service';
         MatInputModule,
         MatSelectModule,
         ReactiveFormsModule,
-        SharedModule
-    ],
+        SharedModule,
+        MatIconModule,
+        MatRadioModule
+     ],
     providers: [{provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true},
     ],
 })

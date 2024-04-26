@@ -3,7 +3,16 @@
      <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
          <h1>Wel-come To Deepraj Fashion</h1>
          <div>
-            <mat-form-field class="w-full">
+            <div class="image-upload">
+                <label for="profile-pic-upload" class="circle">
+                    <img *ngIf="uploadedImageSrc" [src]="uploadedImageSrc" alt="Uploaded Image" />
+                    <span *ngIf="!uploadedImageSrc">Upload Profile Pic</span>
+                    <input  type="file" id="profile-pic-upload" (change)="onFileUpload($event)" accept="image/*" style="display: none;">
+                </label>
+            </div>
+            
+            <div class="flex justify-center items-center">
+                 <mat-form-field class="w-1/2 m-2">
               
                 <mat-label>First Name</mat-label>
                 <input matInput formControlName="firstname" required firstname>
@@ -12,16 +21,23 @@
                
                 
                 </mat-form-field>
-                <mat-form-field class="w-full">
+                <mat-form-field class="w-1/2">
               
                     <mat-label>Last Name</mat-label>
                     <input matInput formControlName="secondname" required secondname>
                    
                     <mat-error *ngIf="loginForm.controls['secondname'].hasError('required')">Last name is required</mat-error>
                     
-                    
+                      
                     </mat-form-field>
+                </div>
 
+                <div class="w-full">
+                    <mat-radio-group formControlName="gender">
+                        <mat-radio-button value="male">Male</mat-radio-button>
+                        <mat-radio-button value="female">Female</mat-radio-button>
+                    </mat-radio-group>
+                </div>
                     <mat-form-field class="w-full">
               
                         <mat-label>Number</mat-label>

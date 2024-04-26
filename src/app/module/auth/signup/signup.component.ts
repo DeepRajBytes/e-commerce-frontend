@@ -12,6 +12,8 @@ import { Authservice } from 'src/app/state/auth/auth.service';
 export class SignupComponent {
   @Input() changeTemplate :any
 
+  uploadedImageSrc: string | null = null;
+
   constructor( private formbuilder : FormBuilder , private store :Store ,private authSerive:Authservice){
   
   }
@@ -20,7 +22,9 @@ export class SignupComponent {
     secondname :['',[Validators.required]],
     mobile :['',[Validators.required]],
     email : ['',[Validators.required,Validators.email]],
-    password : ['',[Validators.required,Validators.minLength(8)]]
+    password : ['',[Validators.required,Validators.minLength(8)]],
+    image:[,[Validators.required]],
+    gender:[,[Validators.required]]
   })                       
   
   submitForm():void{
@@ -29,5 +33,21 @@ export class SignupComponent {
       this.authSerive.signup(this.loginForm.value)
     }
   }
+  onFileUpload(event: Event): void {
+    const fileInput = event.target as HTMLInputElement;
+    const file = fileInput.files ? fileInput.files[0] : null;
+
+    if (file) {
+       
+        this.loginForm.patchValue({
+            image: file
+        });
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            this.uploadedImageSrc = reader.result as string;
+        };
+        reader.readAsDataURL(file);
+    }
+}
   
 }

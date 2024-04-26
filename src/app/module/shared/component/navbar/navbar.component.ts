@@ -136,7 +136,7 @@ export class NavbarComponent implements OnInit {
   handleOpenLoginModal = () => {
     this.dialog.open(AuthComponent, {
       disableClose: false,
-      width: "400px",
+      width: "550px",
       id: 'auth-dialog'
 
     })
