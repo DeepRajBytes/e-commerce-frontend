@@ -22,13 +22,14 @@ export class AddReviewComponent implements OnInit{
   ngOnInit(): void {
     
     this.product = this.data.product
+    console.log(this.product)
     console.log(this.data.productId); 
     
   }
 
   submitForm():void{
     if(this.reviewForm.valid){
-    // console.log("review data",this.reviewForm.value);
+    console.log("review data",this.reviewForm.value);
     const reviewdata = this.reviewForm.get("review")?.value
     this.productService.reviewProduct({productId : this.data.productId , review :reviewdata})
 

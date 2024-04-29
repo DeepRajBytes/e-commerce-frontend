@@ -21,7 +21,6 @@ import { AddReviewComponent } from 'src/app/module/shared/component/add-review/a
 export class ProductDetailsComponent implements OnInit {
   
   selectedsize: any;
-  reviews =[1,2,3];
   relatedproduct:any 
   product: any;
   productId : any;
