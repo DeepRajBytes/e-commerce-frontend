@@ -78,7 +78,7 @@
             <div class="lg:grid grid-cols-12 gap-7">
                 
                 <div class="col-span-7 h-72 overflow-auto hide-scrollbar">
-                    <div class="space-y-5" *ngFor="let item of product?.reviews.reverse() ">
+                    <div class="space-y-5" *ngFor="let item of product?.reviews">
                         <app-review [reviews]="item"></app-review>
                     </div>
                 </div>
