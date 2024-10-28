@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
@@ -31,7 +30,7 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     
   const id = this.activeRoute.snapshot.paramMap.get("id")
-     this.productService.findProductById(id);
+    this.productService.findProductById(id);
     this.productId = id
      this.store.pipe(select(store => store.product)).subscribe((product) => {
       this.product = product?.product
@@ -39,26 +38,26 @@ export class ProductDetailsComponent implements OnInit {
       // console.log("product ye hai  chekc kar", this.product)
     }) 
     
-    
-  //   this.store.pipe(select(store => store.product)).subscribe((product) => {
-  //     console.log("product",product);
-      
-  //     this.relatedproduct = product?.products?.content.filter((item: any) => item._id !== this.productId);
-  // })
-    
+
+    //   this.store.pipe(select(store => store.product)).subscribe((product) => {
+    //     console.log("product",product);
+
+    //     this.relatedproduct = product?.products?.content.filter((item: any) => item._id !== this.productId);
+    // })
+
     this.fetchRelatedProducts();
-   }
+  }
 
 
-   selectColor(image: any): void {
+  selectColor(image: any): void {
     this.currentImageUrl = image.urls;
-}
+  }
 
 
   async fetchRelatedProducts() {
      this.relatedproduct = this.dataService.getRelatedProductData().filter((item: any) => item._id !== this.productId);;
-     console.log('Related Products:', this.relatedproduct);
-    }
+    console.log('Related Products:', this.relatedproduct);
+  }
 
   reload(id:any){
     // console.log("click par yeh ", id);
@@ -85,7 +84,7 @@ export class ProductDetailsComponent implements OnInit {
   async handleAddToCart() {
 
     const token = localStorage.getItem('JWT');
-    if (token === null) {
+    if (!token || token === 'null') {
       this.dialog.open(AuthComponent, {
         disableClose: false,
         width: '550px',
@@ -102,20 +101,23 @@ export class ProductDetailsComponent implements OnInit {
       //     this.handleOpenLoginModal();
       //   }
       // });
-      return;
+    } else {
+      const data = {
+        size: this.selectedsize,
+        productId: this.productId,
+        color: this.selectColor,
+      };
+      this.cartService.additemTocart(data);
+
+      this.snackBar.open('Item Added To Cart', 'Dismiss', {
+        duration: 2000,
+      });
     }
-
-    const data = { size: this.selectedsize, productId: this.productId ,color:this.selectColor}
-    this.cartService.additemTocart(data);
-
-    this.snackBar.open('Item Added To Cart', 'Dismiss', {
-      duration: 2000, 
-    })
 
     // this.cartService.getCart()
 
   }
- 
+
   async handleAddToBuy() {
 
     const token = localStorage.getItem('JWT');
@@ -131,7 +133,7 @@ export class ProductDetailsComponent implements OnInit {
           this.handleOpenLoginModal();
         }
       });
-      return; 
+      return;
     }
     // console.log("that is the color",this.selectColor)
     const data = { size: this.selectedsize, productId: this.productId  }
@@ -177,7 +179,6 @@ export class ProductDetailsComponent implements OnInit {
 
 // constructor(private dialog : MatDialog,private route:Router , private productService : ProductService , private activeRoute : ActivatedRoute , private store : Store<AppState> , private cartService : CartService ){}
 
-
 // ngOnInit(): void {
 //   this.relatedproduct = mensShoesPage1.slice(0,8)
 //   const id = this.activeRoute.snapshot.paramMap.get("id")
@@ -187,7 +188,7 @@ export class ProductDetailsComponent implements OnInit {
 //   this.store.pipe(select(store=>store.product)).subscribe((product)=>{
 //     this.product = product?.product
 //     // console.log("store ka data",product.product)
-//   })   
+//   })
 
 // }
 
@@ -203,16 +204,15 @@ export class ProductDetailsComponent implements OnInit {
 //     confirmButtonText: 'Login',
 //     cancelButtonText: 'Cancel',
 //     preConfirm: () => {
-      
+
 //       this.handleOpenLoginModal();
 //     }
-    
-//   });
-  
-//   this.route.navigate(['/']);
-//   return; 
-// }
 
+//   });
+
+//   this.route.navigate(['/']);
+//   return;
+// }
 
 // const data = {size : this.selectedsize , productId : this.productId}
 
@@ -222,7 +222,7 @@ export class ProductDetailsComponent implements OnInit {
 //   icon: 'success',
 //   title: 'Item Added to Cart',
 //   showConfirmButton: false,
-//   timer: 1500 
+//   timer: 1500
 // });
 
 // this.cartService.getCart()
@@ -237,6 +237,5 @@ export class ProductDetailsComponent implements OnInit {
 //     width: "400px",
 //   });
 // }
-
 
 // }
