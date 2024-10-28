@@ -85,19 +85,24 @@ export class ProductDetailsComponent implements OnInit {
   async handleAddToCart() {
 
     const token = localStorage.getItem('JWT');
-    if (!token) {
-      await Swal.fire({
-        icon: 'error',
-        title: 'Please Login to Become Fashion iCon',
-        showCancelButton: true,
-        showConfirmButton: true,
-        confirmButtonText: 'Login',
-        cancelButtonText: 'Cancel',
-        preConfirm: () => {
-          this.handleOpenLoginModal();
-        }
+    if (token === null) {
+      this.dialog.open(AuthComponent, {
+        disableClose: false,
+        width: '550px',
+        id: 'auth-dialog',
       });
-      return; 
+      // await Swal.fire({
+      //   icon: 'error',
+      //   title: 'Please Login to Become Fashion iCon',
+      //   showCancelButton: true,
+      //   showConfirmButton: true,
+      //   confirmButtonText: 'Login',
+      //   cancelButtonText: 'Cancel',
+      //   preConfirm: () => {
+      //     this.handleOpenLoginModal();
+      //   }
+      // });
+      return;
     }
 
     const data = { size: this.selectedsize, productId: this.productId ,color:this.selectColor}
